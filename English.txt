@@ -1,0 +1,8 @@
+car
+
+fish
+cat
+line
+big
+small
+idiot
