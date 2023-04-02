@@ -1,7 +1,0 @@
-bonjour
-
-salut
-
-oui
-
-non
