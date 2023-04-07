@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Translation {
     private String Name;
-    private HashMap <String,String> Translation = new HashMap <> ();
+    private HashMap <String,String> Translation;
 
     public Translation(String Name ,HashMap<String, String> translation ) {
-        Translation = translation;
+        this.Translation = translation;
         this.Name  = Name;
     }
 

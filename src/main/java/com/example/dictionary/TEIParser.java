@@ -7,9 +7,16 @@ import java.util.HashMap;
 public class TEIParser {
 
     public static HashMap<String,String> Parsing(int Selected) {
-        String[] fileNames = {"eng-ell.txt", "eng-fra.txt", "eng-swe.txt", "eng-tur.txt", "fra-eng.txt", "ita-deu.txt", "ita-eng.txt","spa-eng.txt","swe-eng.txt","tur-deu.txt","tur-eng.txt"};
-        HashMap<String, String>[] maps = new HashMap[11];
-        for (int i = 0; i < 11; i++) {
+        String[] fileNames = {
+                "deu-ell.tei","deu-eng.tei","deu-fra.tei","deu-swe.tei","ell-eng.tei",
+                "ell-fra.tei","ell-ita.tei","tur-deu.tei","tur-eng.tei","eng-ell.tei",
+                "eng-deu.tei","eng-fra.tei","eng-swe.tei","eng-tur.tei","fra-deu.tei",
+                "fra-ell.tei","fra-eng.tei","fra-ita.tei","fra-swe.tei","fra-tur.tei",
+                "ita-deu.tei","ita-ell.tei","ita-eng.tei","ita-swe.tei","ita-tur.tei",
+                "swe-deu.tei","swe-eng.tei","swe-fra.tei","swe-ita.tei","swe-tur.tei",
+                "eng-ita.tei","deu-tur.tei","deu-ita.tei"};
+        HashMap<String, String>[] maps = new HashMap[33];
+        for (int i = 0; i < 33; i++) {
             maps[i] = new HashMap<>();
         }
 
@@ -17,7 +24,7 @@ public class TEIParser {
             // Define file names and corresponding HashMaps
 
             // Loop through files and read data into HashMaps
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < 33; i++) {
                 String fileName = fileNames[i];
                 System.out.println(TEIParser.class.getClassLoader().getResource(fileName));
                 InputStream inputStream = TEIParser.class.getClassLoader().getResourceAsStream(fileName);
@@ -28,9 +35,9 @@ public class TEIParser {
                 while ((line = reader.readLine()) != null) {
 
                         if (line.contains("<orth>")) {
-                            currentOrth = line.replaceAll("<.*?>", "");
+                            currentOrth = line.replaceAll("<.*?>", "").trim();
                         } else if (line.contains("<quote>")) {
-                            String quote = line.replaceAll("<.*?>", "");
+                            String quote = line.replaceAll("<.*?>", "").trim();
                             maps[i].put(currentOrth, quote);
                             currentOrth = null;
 
@@ -40,13 +47,8 @@ public class TEIParser {
                 reader.close();
             }
 
-            // Print results
 
-                System.out.println("Results for  "+fileNames[Selected]+  (Selected+1) + ":");
-                HashMap<String, String> map = maps[Selected];
-                for (String key : map.keySet()) {
-                    System.out.println("Key: " + key + " Value: " + map.get(key));
-                }
+
 
 
         } catch (Exception e) {

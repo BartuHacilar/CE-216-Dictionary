@@ -1,16 +1,11 @@
 package com.example.dictionary;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -49,9 +44,15 @@ public class MainController {
 
     @FXML
     private AnchorPane root;
+    @FXML
+    private ListView<String> H_List;
 
 
-    private Translation translation;
+
+
+    private Translation eng_deutrans;
+
+    private TEIParser Parser;
 
     public void initialize() {
         // set the prompt text and items for the combo boxes
@@ -65,13 +66,37 @@ public class MainController {
         textArea1.setPromptText("Enter text here");
         textArea2.setPromptText("Translated text will apear here");
 
+        Parser = new TEIParser();
+        HashMap<String,String>tempeng_deu = Parser.Parsing(11);
+
+        eng_deutrans = new Translation("eng_deu",tempeng_deu);
+        H_List.setItems(FXCollections.observableArrayList());
+        if (eng_deutrans.getTranslation().keySet()==null)
+            System.out.println("bu boş la");
 
 
+        // ... your existing code ...
 
+        // Add listener for textArea1
+        textArea1.textProperty().addListener((observable, oldValue, newValue) -> {
+            H_List.getItems().clear();
+            String searchWord = textArea1.getText();
+
+            String regex = "(?i)" + searchWord + "\\w*";
+            boolean hasMatches = eng_deutrans.getTranslation().keySet()
+                    .stream()
+                    .anyMatch(key -> key != null && key.matches(regex));
+
+            if (hasMatches) {
+                eng_deutrans.getTranslation().keySet()
+                        .stream()
+                        .filter(key -> key != null && key.matches(regex))
+                        .forEach(H_List.getItems()::add);
+            }
+
+        });
 
     }
-
-
 
     public void Clear () {
         textArea1.setText("");
@@ -79,23 +104,30 @@ public class MainController {
         System.out.println("SİLİNDİ");
 
     }
-    public void Langperm(){
+
+    public void Translate(){
+        String Searchword=textArea1.getText();
 
         String s1 = comboBox1.getValue();
         String s2 = comboBox2.getValue();
 
+        if(s1=="English"&&s2=="German"){
+            String key = Searchword;
+           if(  eng_deutrans.getTranslation().containsKey(Searchword)) {
+               String value=  eng_deutrans.getTranslation().get(key);
+               textArea1.setText(key);
+               textArea2.setText(value);
+           }
+           else System.out.println("There is no such word in this file");
+           }
+        }
 
-
-    }
-
-    public String translateNow(){
-       String Searchword=textArea1.getText();
-       return Searchword;
-
-
-
-        //textArea2.setText(HashMap);
-
+    public  void Replace(){
+        String s1 = comboBox1.getValue();
+        String s2 = comboBox2.getValue();
+        int temp = comboBox1.getSelectionModel().getSelectedIndex();
+        comboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
+        comboBox2.getSelectionModel().select(temp);
     }
 
 }
