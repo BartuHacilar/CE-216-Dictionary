@@ -491,6 +491,7 @@ public class MainController {
         }
 
 
+
         //Switching first language box to Modern Greek
         else if(s1=="Modern Greek"&&s2=="English"){
             String key = Searchword;
@@ -689,6 +690,15 @@ public class MainController {
             }
             else System.out.println("There is no such word in this file");
         }
+        else if(s1=="French"&&s2=="Turkish"){
+            String key = Searchword;
+            if(  fra_tur.getTranslation().containsKey(Searchword)) {
+                String value=  fra_tur.getTranslation().get(key);
+                textArea1.setText(key);
+                textArea2.setText(value);
+            }
+            else System.out.println("There is no such word in this file");
+}
         else if(s1=="French"&&s2=="Italian"){
             String key = Searchword;
             if(  fra_ita.getTranslation().containsKey(Searchword)) {
