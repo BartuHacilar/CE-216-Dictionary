@@ -1,0 +1,2 @@
+eng-deu.tei filter=lfs diff=lfs merge=lfs -text
+deu-eng.tei filter=lfs diff=lfs merge=lfs -text
