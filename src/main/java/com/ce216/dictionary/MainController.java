@@ -1,14 +1,12 @@
 package com.ce216.dictionary;
 import javafx.collections.FXCollections;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.*;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 
 public class MainController {
 
@@ -49,317 +47,309 @@ public class MainController {
 
 
 
-    private Translation deu_ell;
-    private Translation deu_eng;
-    private Translation deu_fra;
-    private Translation deu_ita;
-    private Translation deu_swe;
-    private Translation deu_tur;
+    private HashMap<String,String> German_ModernGreek;
+    private HashMap<String,String> German_English;
+    private HashMap<String,String> German_French;
+    private HashMap<String,String> German_Italian;
+    private HashMap<String,String> German_Swedish;
+    private HashMap<String,String> German_Turkish;
 
-    private Translation ell_eng;
-    private Translation ell_fra;
-    private Translation ell_ita;
+    private HashMap<String,String> ModernGreek_English;
+    private HashMap<String,String> ModernGreek_French;
+    private HashMap<String,String> ModernGreek_Italian;
 
+    private HashMap<String,String> English_German;
+    private HashMap<String,String> English_ModernGreek;
+    private HashMap<String,String> English_French;
+    private HashMap<String,String> English_Italian;
+    private HashMap<String,String> English_Swedish;
+    private HashMap<String,String> English_Turkish;
 
-    private Translation eng_deu;
-    private Translation eng_ell;
-    private Translation eng_fra;
-    private Translation eng_ita;
-    private Translation eng_swe;
-    private Translation eng_tur;
+    private HashMap<String,String> French_German;
+    private HashMap<String,String> French_ModernGreek;
+    private HashMap<String,String> French_English;
+    private HashMap<String,String> French_Italian;
+    private HashMap<String,String> French_Swedish;
+    private HashMap<String,String> French_Turkish;
 
-    private Translation fra_deu;
-    private Translation fra_ell;
-    private Translation fra_eng;
-    private Translation fra_ita;
-    private Translation fra_swe;
-    private Translation fra_tur;
+    private HashMap<String,String> Italian_German;
+    private HashMap<String,String> Italian_ModernGreek;
+    private HashMap<String,String> Italian_English;
+    private HashMap<String,String> Italian_Swedish;
+    private HashMap<String,String> Italian_Turkish;
 
-    private Translation ita_deu;
-    private Translation ita_ell;
-    private Translation ita_eng;
-    private Translation ita_swe;
-    private Translation ita_tur;
+    private HashMap<String,String> Swedish_German;
+    private HashMap<String,String> Swedish_English;
+    private HashMap<String,String> Swedish_French;
+    private HashMap<String,String> Swedish_Italian;
+    private HashMap<String,String> Swedish_Turkish;
 
-    private Translation swe_deu;
-    private Translation swe_eng;
-    private Translation swe_fra;
-    private Translation swe_ita;
-    private Translation swe_tur;
-
-    private Translation tur_deu;
-    private Translation tur_eng;
+    private HashMap<String,String> Turkish_German;
+    private HashMap<String,String> Turkish_English;
 
 
     private TEIParser Parser;
+    private String selectedLanguage1;
+    private String selectedLanguage2;
+    HashMap<String, HashMap<String, String>> languageMaps = new HashMap<>();
 
     public void initialize() {
         // set the prompt text and items for the combo boxes
         comboBox1.setPromptText("Language");
         comboBox1.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        comboBox1.setOnAction(event -> {
+            selectedLanguage1 = comboBox1.getValue().replace(" ", "").trim();
+        });
 
         comboBox2.setPromptText("Language");
         comboBox2.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        comboBox2.setOnAction(event -> {
+            selectedLanguage2 = comboBox2.getValue().replace(" ", "").trim();
+        });
 
         // set the text for the text areas
         textArea1.setPromptText("Enter text here");
-        textArea2.setPromptText("Translated text will apear here");
+        textArea2.setPromptText("Translated text will appear here");
 
         Parser = new TEIParser();
         H_List.setItems(FXCollections.observableArrayList());
 
 
-        HashMap<String,String>tempdeu_ell = Parser.Parsing(0);
+        German_ModernGreek = Parser.Parsing(0);
+        languageMaps.put("German_ModernGreek",German_ModernGreek);
+        if (German_ModernGreek.keySet() == null) {
+            System.out.println("German to Modern Greek is empty");
+        }
 
-        deu_ell = new Translation("deu_ell",tempdeu_ell);
+        German_English = Parser.Parsing(1);
+        languageMaps.put("German_English",German_English);
+        if (German_English.keySet() == null) {
+            System.out.println("German to English is empty");
+        }
 
-        if (deu_ell.getTranslation().keySet()==null){
-            System.out.println("This is empty");}
+        German_French = Parser.Parsing(2);
+        languageMaps.put("German_French",German_French);
+        if (German_French.keySet() == null) {
+            System.out.println("German to French is empty");
+        }
 
-        HashMap<String,String>tempdeu_eng = Parser.Parsing(1);
 
-        deu_eng = new Translation("deu_eng",tempdeu_eng);
+        German_Swedish = Parser.Parsing(3);
+        languageMaps.put("German_Swedish",German_Swedish);
+        if (German_Swedish.keySet() == null) {
+            System.out.println("German to Swedish is empty");
+        }
 
-        if (deu_eng.getTranslation().keySet()==null)
+
+
+        ModernGreek_English = Parser.Parsing(4);
+        languageMaps.put("ModernGreek_English",ModernGreek_English  );
+        if (ModernGreek_English.keySet() == null) {
+            System.out.println("Modern Greek to English is empty");
+        }
+
+        ModernGreek_French = Parser.Parsing(5);
+        languageMaps.put("ModernGreek_French", ModernGreek_French );
+        if (ModernGreek_French.keySet() == null) {
+            System.out.println("Modern Greek to French is empty");
+        }
+
+        ModernGreek_Italian = Parser.Parsing(6);
+        languageMaps.put("ModernGreek_Italian",ModernGreek_Italian  );
+        if (ModernGreek_Italian.keySet() == null) {
+            System.out.println("Modern Greek to Italian is empty");
+        }
+
+        Turkish_German = Parser.Parsing(7);
+        languageMaps.put("Turkish_German",Turkish_German  );
+
+        if (Turkish_German.keySet()==null)
             System.out.println("This is empty");
 
-        HashMap<String,String>tempdeu_fra = Parser.Parsing(2);
+        Turkish_English = Parser.Parsing(8);
+        languageMaps.put("Turkish_English",Turkish_English  );
 
-        deu_fra = new Translation("deu_fra",tempdeu_fra);
-
-        if (deu_fra.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempdeu_swe = Parser.Parsing(3);
-
-        deu_swe = new Translation("deu_swe",tempdeu_swe);
-
-        if (deu_swe.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempell_eng = Parser.Parsing(4);
-
-        ell_eng = new Translation("ell_eng",tempell_eng);
-
-        if (ell_eng.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempell_fra = Parser.Parsing(5);
-
-        ell_fra = new Translation("ell_fra",tempell_fra);
-
-        if (ell_fra.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempell_ita = Parser.Parsing(6);
-
-        ell_ita = new Translation("ell_ita",tempell_ita);
-
-        if (ell_ita.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>temptur_deu = Parser.Parsing(7);
-
-        tur_deu = new Translation("tur_deu",temptur_deu);
-
-        if (tur_deu.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>temptur_eng = Parser.Parsing(8);
-
-        tur_eng = new Translation("tur_eng",temptur_eng);
-
-        if (tur_eng.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_ell = Parser.Parsing(9);
-
-        eng_ell = new Translation("eng_ell",tempeng_ell);
-
-        if (eng_ell.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_deu = Parser.Parsing(10);
-
-        eng_deu = new Translation("eng_deu",tempeng_deu);
-
-        if (eng_deu.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_fra = Parser.Parsing(11);
-
-        eng_fra = new Translation("eng_fra",tempeng_fra);
-
-        if (eng_fra.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_swe = Parser.Parsing(12);
-
-        eng_swe = new Translation("eng_swe",tempeng_swe);
-
-        if (eng_swe .getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_tur = Parser.Parsing(13);
-
-        eng_tur = new Translation("eng_tur",tempeng_tur);
-
-        if (eng_tur.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_deu = Parser.Parsing(14);
-
-        fra_deu = new Translation("fra_deu",tempfra_deu);
-
-        if (fra_deu.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_ell = Parser.Parsing(15);
-
-        fra_ell = new Translation("fra_ell",tempfra_ell);
-
-        if (fra_ell.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_eng = Parser.Parsing(16);
-
-        fra_eng = new Translation("fra_eng",tempfra_eng);
-
-        if (fra_eng.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_ita = Parser.Parsing(17);
-
-        fra_ita = new Translation("fra_ita",tempfra_ita);
-
-        if (fra_ita.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_swe = Parser.Parsing(18);
-
-        fra_swe = new Translation("fra_swe",tempfra_swe);
-
-        if (fra_swe.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempfra_tur = Parser.Parsing(19);
-
-        fra_tur = new Translation("fra_tur",tempfra_tur);
-
-        if (fra_tur.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempita_deu = Parser.Parsing(20);
-
-        ita_deu = new Translation("ita_deu",tempita_deu);
-
-        if (ita_deu.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempita_ell = Parser.Parsing(21);
-
-        ita_ell = new Translation("ita_ell",tempita_ell);
-
-        if (ita_ell .getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempita_eng = Parser.Parsing(22);
-
-        ita_eng = new Translation("ita_eng",tempita_eng);
-
-        if (ita_eng.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempita_swe = Parser.Parsing(23);
-
-        ita_swe = new Translation("ita_swe",tempita_swe);
-
-        if (ita_swe.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempita_tur = Parser.Parsing(24);
-
-        ita_tur = new Translation("ita_tur",tempita_tur);
-
-        if (ita_tur.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempswe_deu = Parser.Parsing(25);
-
-        swe_deu = new Translation("swe_deu",tempswe_deu);
-
-        if (swe_deu.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempswe_eng = Parser.Parsing(26);
-
-        swe_eng = new Translation("swe_eng",tempswe_eng);
-
-        if (swe_eng.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempswe_fra = Parser.Parsing(27);
-
-        swe_fra = new Translation("swe_fra",tempswe_fra);
-
-        if (swe_fra.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempswe_ita = Parser.Parsing(28);
-
-        swe_ita = new Translation("swe_ita",tempswe_ita);
-
-        if (swe_ita.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempswe_tur = Parser.Parsing(29);
-
-        swe_tur = new Translation("swe_tur",tempswe_tur);
-
-        if (swe_tur.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempeng_ita = Parser.Parsing(30);
-
-        eng_ita = new Translation("eng_ita",tempeng_ita);
-
-        if (eng_ita.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempdeu_tur = Parser.Parsing(31);
-
-        deu_tur = new Translation("tur_eng",tempdeu_tur);
-
-        if (deu_tur.getTranslation().keySet()==null)
-            System.out.println("This is empty");
-
-        HashMap<String,String>tempdeu_ita = Parser.Parsing(32);
-
-        deu_ita = new Translation("deu_ita",tempdeu_ita);
-
-        if (deu_ita.getTranslation().keySet()==null)
+        if (Turkish_English.keySet()==null)
             System.out.println("This is empty");
 
 
-/*
+
+        English_ModernGreek = Parser.Parsing(9);
+        languageMaps.put("English_ModernGreek", English_ModernGreek );
+        if (English_ModernGreek.keySet() == null) {
+            System.out.println("English to Modern Greek is empty");
+        }
+
+        English_German = Parser.Parsing(10);
+        languageMaps.put("English_German",English_German  );
+        if (English_German.keySet() == null) {
+            System.out.println("English to German is empty");
+        }
+
+        English_French = Parser.Parsing(11);
+        languageMaps.put(" English_French", English_French  );
+        if (English_French.keySet() == null) {
+            System.out.println("English_French is empty");
+        }
+
+
+
+        English_Swedish = Parser.Parsing(12);
+        languageMaps.put(" English_Swedish", English_Swedish  );
+        if (English_Swedish.keySet() == null) {
+            System.out.println("English_Swedish is empty");
+        }
+
+        English_Turkish = Parser.Parsing(13);
+        languageMaps.put(" English_Turkish",  English_Turkish );
+        if (English_Turkish.keySet() == null) {
+            System.out.println("English_Turkish is empty");
+        }
+
+        French_German = Parser.Parsing(14);
+        languageMaps.put("French_German", French_German );
+        if (French_German.keySet() == null) {
+            System.out.println("French_German is empty");
+        }
+
+        French_ModernGreek = Parser.Parsing(15);
+        languageMaps.put(" French_ModernGreek",  French_ModernGreek );
+        if (French_ModernGreek.keySet() == null) {
+            System.out.println("French_ModernGreek is empty");
+        }
+
+        French_English = Parser.Parsing(16);
+        languageMaps.put(" French_English",  French_English );
+        if (French_English.keySet() == null) {
+            System.out.println("French_English is empty");
+        }
+
+        French_Italian = Parser.Parsing(17);
+        languageMaps.put("French_Italian",French_Italian  );
+        if (French_Italian.keySet() == null) {
+            System.out.println("French_Italian is empty");
+        }
+
+        French_Swedish = Parser.Parsing(18);
+        languageMaps.put("French_Swedish",French_Swedish  );
+        if (French_Swedish.keySet() == null) {
+            System.out.println("French_Swedish is empty");
+        }
+
+        French_Turkish = Parser.Parsing(19);
+        languageMaps.put("French_Turkish",French_Turkish  );
+        if (French_Turkish.keySet() == null) {
+            System.out.println("French_Turkish is empty");
+        }
+
+        Italian_German = Parser.Parsing(20);
+        languageMaps.put("Italian_German",Italian_German   );
+        if (Italian_German.keySet() == null) {
+            System.out.println("Italian_German is empty");
+        }
+
+        Italian_ModernGreek = Parser.Parsing(21);
+        languageMaps.put("Italian_ModernGreek", Italian_ModernGreek  );
+        if (Italian_ModernGreek.keySet() == null) {
+            System.out.println("Italian_ModernGreek is empty");
+        }
+
+        Italian_English = Parser.Parsing(22);
+        languageMaps.put("Italian_English", Italian_English  );
+        if (Italian_English.keySet() == null) {
+            System.out.println("Italian_English is empty");
+        }
+
+        Italian_Swedish = Parser.Parsing(23);
+        languageMaps.put("Italian_Swedish", Italian_Swedish );
+        if (Italian_Swedish.keySet() == null) {
+            System.out.println("Italian_Swedish is empty");
+        }
+
+        Italian_Turkish = Parser.Parsing(24);
+        languageMaps.put("Italian_Turkish",Italian_Turkish  );
+        if (Italian_Turkish.keySet() == null) {
+            System.out.println("Italian_Turkish is empty");
+        }
+
+        Swedish_German = Parser.Parsing(25);
+        languageMaps.put("Swedish_German",Swedish_German  );
+        if (Swedish_German.keySet() == null) {
+            System.out.println("Swedish_German is empty");
+        }
+
+        Swedish_English = Parser.Parsing(26);
+        languageMaps.put("Swedish_English",Swedish_English  );
+        if (Swedish_English.keySet() == null) {
+            System.out.println("Swedish_English is empty");
+        }
+
+        Swedish_French = Parser.Parsing(27);
+        languageMaps.put("Swedish_French",Swedish_French  );
+        if (Swedish_French.keySet() == null) {
+            System.out.println("Swedish_French is empty");
+        }
+
+        Swedish_Italian = Parser.Parsing(28);
+        languageMaps.put("Swedish_Italian",Swedish_Italian  );
+
+        if (Swedish_Italian.keySet()==null)
+            System.out.println("This is empty");
+
+        Swedish_Turkish = Parser.Parsing(29);
+        languageMaps.put("Swedish_Turkish",Swedish_Turkish  );
+
+        if (Swedish_Turkish.keySet()==null)
+            System.out.println("This is empty");
+
+        English_Italian = Parser.Parsing(30);
+        languageMaps.put("English_Italian",English_Italian  );
+        if (English_Italian.keySet() == null) {
+            System.out.println("English_Italian is empty");
+        }
+        German_Turkish = Parser.Parsing(31);
+        languageMaps.put(" German_Turkish",  German_Turkish );
+        if (German_Turkish.keySet() == null) {
+            System.out.println("German to Turkish is empty");
+        }
+
+        German_Italian = Parser.Parsing(32);
+        languageMaps.put("German_Italian",German_Italian);
+        if (German_Italian.keySet() == null) {
+            System.out.println("German to Italian is empty");
+        }
+
+
         // Add listener for textArea1
         textArea1.textProperty().addListener((observable, oldValue, newValue) -> {
             H_List.getItems().clear();
             String searchWord = textArea1.getText();
 
+            String SelectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
+            if (languageMaps.containsKey(SelectedLanguagePair)) {
+                HashMap<String, String> selectedLanguageMap = languageMaps.get(SelectedLanguagePair);
+
             String regex = "(?i)" + searchWord + "\\w*";
-            boolean hasMatches = eng_deu.getTranslation().keySet()
+            boolean hasMatches = selectedLanguageMap.keySet()
                     .stream()
                     .anyMatch(key -> key != null && key.matches(regex));
 
             if (hasMatches) {
-                eng_deu.getTranslation().keySet()
+                selectedLanguageMap.keySet()
                         .stream()
                         .filter(key -> key != null && key.matches(regex))
                         .forEach(H_List.getItems()::add);
-            }
+                H_List.setOnMouseClicked(e -> {
+                    String selectedItem = H_List.getSelectionModel().getSelectedItem();
+                    if (selectedItem != null) {
+                        textArea1.setText(selectedItem);
+                    }
+                });
 
-        });*/
+
+            }}
+
+        });
 
     }
 
@@ -371,203 +361,38 @@ public class MainController {
     }
 
     public void Translate(){
+
+
         String Searchword=textArea1.getText();
 
-        String s1 = comboBox1.getValue();
-        String s2 = comboBox2.getValue();
-
-        if(s1=="English"&&s2=="German"){
-            String key = Searchword;
-           if(  eng_deu.getTranslation().containsKey(Searchword)) {
-               String value=  eng_deu.getTranslation().get(key);
-               textArea1.setText(key);
-               textArea2.setText(value);
-           }
-           else System.out.println("There is no such word in this file");
-           }
-        else if(s1=="English"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(  eng_ell.getTranslation().containsKey(Searchword)) {
-                String value=  eng_ell.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
+        String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
+        if (languageMaps.containsKey(selectedLanguagePair)) {
+            HashMap<String, String> selectedLanguageMap = languageMaps.get(selectedLanguagePair);
+            String translation = selectedLanguageMap.get(Searchword);
+            if (translation != null) {
+                textArea1.setText(Searchword);
+                textArea2.setText(translation);
+            } else {
+                System.out.println("There is no such word in this file");
             }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="English"&&s2=="French"){
-            String key = Searchword;
-            if(  eng_fra.getTranslation().containsKey(Searchword)) {
-                String value=  eng_fra.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="English"&&s2=="Swedish"){
-            String key = Searchword;
-            if(  eng_swe.getTranslation().containsKey(Searchword)) {
-                String value=  eng_swe.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="English"&&s2=="Turkish"){
-            String key = Searchword;
-            if(  eng_tur.getTranslation().containsKey(Searchword)) {
-                String value=  eng_tur.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="English"&&s2=="Italian"){
-            String key = Searchword;
-            if(  eng_ita.getTranslation().containsKey(Searchword)) {
-                String value=  eng_ita.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-
-        //Switching to first box to German
-        else if(s1=="German"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(  deu_ell.getTranslation().containsKey(Searchword)) {
-                String value=  deu_ell.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="German"&&s2=="English"){
-            String key = Searchword;
-            if(  deu_eng.getTranslation().containsKey(Searchword)) {
-                String value=  deu_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-
-
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="German"&&s2=="French"){
-            String key = Searchword;
-            if(  deu_fra.getTranslation().containsKey(Searchword)) {
-                String value=  deu_fra.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="German"&&s2=="Swedish"){
-            String key = Searchword;
-            if(  deu_swe.getTranslation().containsKey(Searchword)) {
-                String value=  deu_swe.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="German"&&s2=="Turkish"){
-            String key = Searchword;
-            if(  deu_tur.getTranslation().containsKey(Searchword)) {
-                String value=  deu_tur.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="German"&&s2=="Italian"){
-            String key = Searchword;
-            if(  deu_ita.getTranslation().containsKey(Searchword)) {
-                String value=  deu_ita.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-
-
-
-        //Switching first language box to Modern Greek
-        else if(s1=="Modern Greek"&&s2=="English"){
-            String key = Searchword;
-            if(  ell_eng.getTranslation().containsKey(Searchword)) {
-                String value=  ell_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Modern Greek"&&s2=="French"){
-            String key = Searchword;
-            if(  ell_fra.getTranslation().containsKey(Searchword)) {
-                String value=  ell_fra.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Modern Greek"&&s2=="Italian"){
-            String key = Searchword;
-            if(  ell_ita.getTranslation().containsKey(Searchword)) {
-                String value=  ell_ita.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        //İndirect translation
-        else if(s1=="Modern Greek"&&s2=="German"){
-            String key = Searchword;
-            if(ell_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= ell_eng.getTranslation().get(key);
-
-
-                if(eng_deu.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_deu.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
+        } else {
+            System.out.println("Translation between these languages will be indirectly translated");
+            String tempsellangpair1= selectedLanguage1+"_"+ "English";
+            String tempsellangpair2="English"+"_"+selectedLanguage2;
+            if(languageMaps.containsKey(tempsellangpair1)&&languageMaps.containsKey(tempsellangpair2)){
+                HashMap<String, String> tempLanguageMap1 = languageMaps.get(tempsellangpair1);
+                HashMap<String, String> tempLanguageMap2 = languageMaps.get(tempsellangpair2);
+                String translationcheck=tempLanguageMap1.get(Searchword);
+                boolean wordexist =tempLanguageMap2.containsKey(tempLanguageMap1.get(Searchword));
+                String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
+                if(translationcheck!=null&&wordexist==true){
+                    textArea1.setText(Searchword);
+                    textArea2.setText(indirecttranslation);
                 }
-
-            }
-        }
-        //İndirect translation
-
-        else if(s1=="Modern Greek"&&s2=="Turkish"){
-            String key = Searchword;
-            if(ell_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= ell_eng.getTranslation().get(key);
-
-
-                if(eng_tur.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_tur.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-        //İndirect translation
-
-        else if(s1=="Modern Greek"&&s2=="Swedish"){
-            String key = Searchword;
-            if(ell_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= ell_eng.getTranslation().get(key);
-
-
-                if(eng_swe.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_swe.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
             }
         }
 
+    }
 
 
 
@@ -575,283 +400,6 @@ public class MainController {
 
 
 
-
-
-        //Switching first language box to Turkish
-        else if(s1=="Turkish"&&s2=="German"){
-            String key = Searchword;
-            if(  tur_deu.getTranslation().containsKey(Searchword)) {
-                String value=  tur_deu.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Turkish"&&s2=="English"){
-            String key = Searchword;
-            if(  tur_eng.getTranslation().containsKey(Searchword)) {
-                String value=  tur_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        //İndirect translation
-        else if(s1=="Turkish"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(tur_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= tur_eng.getTranslation().get(key);
-
-
-                if(eng_ell.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_ell.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-        //İndirect translation
-
-        else if(s1=="Turkish"&&s2=="Italian"){
-            String key = Searchword;
-            if(tur_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= tur_eng.getTranslation().get(key);
-
-
-                if(eng_ita.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_ita.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-        //İndirect translation
-
-        //Translated twice (once from Turk
-        else if(s1=="Turkish"&&s2=="Swedish"){
-            String key = Searchword;
-            if(tur_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= tur_eng.getTranslation().get(key);
-
-
-                if(eng_swe.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_swe.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-        //İndirect translation
-        else if(s1=="Turkish"&&s2=="French"){
-            String key = Searchword;
-            if(tur_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= tur_eng.getTranslation().get(key);
-
-
-                if(eng_fra.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_fra.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-
-
-
-        //Switching first language to French
-        else if(s1=="French"&&s2=="German"){
-            String key = Searchword;
-            if(  fra_deu.getTranslation().containsKey(Searchword)) {
-                String value=  fra_deu.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="French"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(  fra_ell.getTranslation().containsKey(Searchword)) {
-                String value=  fra_ell.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="French"&&s2=="English"){
-            String key = Searchword;
-            if(  fra_eng.getTranslation().containsKey(Searchword)) {
-                String value=  fra_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="French"&&s2=="Turkish"){
-            String key = Searchword;
-            if(  fra_tur.getTranslation().containsKey(Searchword)) {
-                String value=  fra_tur.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-}
-        else if(s1=="French"&&s2=="Italian"){
-            String key = Searchword;
-            if(  fra_ita.getTranslation().containsKey(Searchword)) {
-                String value=  fra_ita.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="French"&&s2=="Swedish"){
-            String key = Searchword;
-            if(  fra_swe.getTranslation().containsKey(Searchword)) {
-                String value=  fra_swe.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-
-
-
-        //Swithing first language box to Italian
-        else if(s1=="Italian"&&s2=="German"){
-            String key = Searchword;
-            if(  ita_deu.getTranslation().containsKey(Searchword)) {
-                String value=  ita_deu.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Italian"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(  ita_ell.getTranslation().containsKey(Searchword)) {
-                String value=  ita_ell.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Italian"&&s2=="English"){
-            String key = Searchword;
-            if(  ita_eng.getTranslation().containsKey(Searchword)) {
-                String value=  ita_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Italian"&&s2=="Swedish"){
-            String key = Searchword;
-            if(  ita_swe.getTranslation().containsKey(Searchword)) {
-                String value=  ita_swe.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Italian"&&s2=="Turkish"){
-            String key = Searchword;
-            if(  ita_tur.getTranslation().containsKey(Searchword)) {
-                String value=  ita_tur.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-
-        //İndirect translation
-        else if(s1=="Italian"&&s2=="French"){
-            String key = Searchword;
-            if(ita_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= ita_eng.getTranslation().get(key);
-
-
-                if(eng_fra.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_fra.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-
-
-
-
-        //Switching first language box to Swedish
-        else if(s1=="Swedish"&&s2=="German"){
-            String key = Searchword;
-            if(  swe_deu.getTranslation().containsKey(Searchword)) {
-                String value=  swe_deu.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Swedish"&&s2=="English"){
-            String key = Searchword;
-            if(  swe_eng.getTranslation().containsKey(Searchword)) {
-                String value=  swe_eng.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Swedish"&&s2=="French"){
-            String key = Searchword;
-            if(  swe_fra.getTranslation().containsKey(Searchword)) {
-                String value=  swe_fra.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Swedish"&&s2=="Italian"){
-            String key = Searchword;
-            if(  swe_ita.getTranslation().containsKey(Searchword)) {
-                String value=  swe_ita.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        else if(s1=="Swedish"&&s2=="Turkish"){
-            String key = Searchword;
-            if(  swe_tur.getTranslation().containsKey(Searchword)) {
-                String value=  swe_tur.getTranslation().get(key);
-                textArea1.setText(key);
-                textArea2.setText(value);
-            }
-            else System.out.println("There is no such word in this file");
-        }
-        //Indirect translation
-        else if(s1=="Swedish"&&s2=="Modern Greek"){
-            String key = Searchword;
-            if(swe_eng.getTranslation().containsKey(Searchword)){
-                String engSearchWord= swe_eng.getTranslation().get(key);
-
-
-                if(eng_ell.getTranslation().containsKey(engSearchWord)){
-                    String value=eng_ell.getTranslation().get(engSearchWord);
-                    textArea1.setText(key);
-                    textArea2.setText(value);
-                }
-
-            }
-        }
-
-
-
-
-        }
 
     public  void Replace(){
         String s1 = comboBox1.getValue();
