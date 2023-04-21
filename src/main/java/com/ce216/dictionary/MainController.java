@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainController {
@@ -114,7 +115,7 @@ public class MainController {
         Parser = new TEIParser();
         H_List.setItems(FXCollections.observableArrayList());
 
-
+        //The TeiParser class puts words into hashmaps for translation of languages, and hashmaps are created for each language pair variation.
         German_ModernGreek = Parser.Parsing(0);
         languageMaps.put("German_ModernGreek",German_ModernGreek);
         if (German_ModernGreek.keySet() == null) {
@@ -187,7 +188,7 @@ public class MainController {
         }
 
         English_French = Parser.Parsing(11);
-        languageMaps.put(" English_French", English_French  );
+        languageMaps.put("English_French", English_French  );
         if (English_French.keySet() == null) {
             System.out.println("English_French is empty");
         }
@@ -195,13 +196,13 @@ public class MainController {
 
 
         English_Swedish = Parser.Parsing(12);
-        languageMaps.put(" English_Swedish", English_Swedish  );
+        languageMaps.put("English_Swedish", English_Swedish  );
         if (English_Swedish.keySet() == null) {
             System.out.println("English_Swedish is empty");
         }
 
         English_Turkish = Parser.Parsing(13);
-        languageMaps.put(" English_Turkish",  English_Turkish );
+        languageMaps.put("English_Turkish",  English_Turkish );
         if (English_Turkish.keySet() == null) {
             System.out.println("English_Turkish is empty");
         }
@@ -213,13 +214,13 @@ public class MainController {
         }
 
         French_ModernGreek = Parser.Parsing(15);
-        languageMaps.put(" French_ModernGreek",  French_ModernGreek );
+        languageMaps.put("French_ModernGreek",  French_ModernGreek );
         if (French_ModernGreek.keySet() == null) {
             System.out.println("French_ModernGreek is empty");
         }
 
         French_English = Parser.Parsing(16);
-        languageMaps.put(" French_English",  French_English );
+        languageMaps.put("French_English",  French_English );
         if (French_English.keySet() == null) {
             System.out.println("French_English is empty");
         }
@@ -308,7 +309,7 @@ public class MainController {
             System.out.println("English_Italian is empty");
         }
         German_Turkish = Parser.Parsing(31);
-        languageMaps.put(" German_Turkish",  German_Turkish );
+        languageMaps.put("German_Turkish",  German_Turkish );
         if (German_Turkish.keySet() == null) {
             System.out.println("German to Turkish is empty");
         }
@@ -320,7 +321,7 @@ public class MainController {
         }
 
 
-        // Add listener for textArea1
+        // Displays words that are ready to be translated to the user based on changes made in the text area.
         textArea1.textProperty().addListener((observable, oldValue, newValue) -> {
             H_List.getItems().clear();
             String searchWord = textArea1.getText();
@@ -348,20 +349,58 @@ public class MainController {
 
 
             }}
+            else { /*"For indirect translations, the keys and values of two hashmaps will be searched,
+            any words that are ready to be translated will be displayed to the user." */
+                String tsellangpair1= selectedLanguage1+"_"+ "English";
+                String tsellangpair2="English"+"_"+selectedLanguage2;
+                if(languageMaps.containsKey(tsellangpair1)&&languageMaps.containsKey(tsellangpair2)){
+                    HashMap<String, String> tLanguageMap1 = languageMaps.get(tsellangpair1);
+                    HashMap<String, String> tLanguageMap2 = languageMaps.get(tsellangpair2);
+                String regex = "(?i)" + searchWord + "\\w*";
+                boolean hasMatches = tLanguageMap1.keySet()
+                        .stream()
+                        .anyMatch(key -> key != null && key.matches(regex));
 
-        });
+                if(hasMatches){
+                    String regex2 = "(?i)" + tLanguageMap1.get(searchWord) + "\\w*";
+                    boolean hasTranslation = tLanguageMap2.keySet()
+                            .stream()
+                            .anyMatch(key -> key != null && key.matches(regex2));
+                    if (hasTranslation){
+                        ArrayList<String>Translatable = new ArrayList<>();
+                        for (String key : tLanguageMap1.keySet()) {
+                            boolean Translationexist =tLanguageMap2.containsKey(tLanguageMap1.get(key));
+                            if(Translationexist)
+                                Translatable.add(key);
+                        }
+
+                        Translatable
+                                .stream()
+                                .filter(key -> key != null && key.matches(regex))
+                                .forEach(H_List.getItems()::add);
+                        H_List.setOnMouseClicked(e -> {
+                            String selectedItem = H_List.getSelectionModel().getSelectedItem();
+                            if (selectedItem != null) {
+                                textArea1.setText(selectedItem);
+                            }
+                        });
+                    }
+                }
+
+                }
+
+        }});
 
     }
 
     public void Clear () {
         textArea1.setText("");
         textArea2.setText("");
-        System.out.println("SİLİNDİ");
+        System.out.println("Deleted");
 
     }
 
-    public void Translate(){
-
+    public void Translate(){//Translates the given word in the desired language
 
         String Searchword=textArea1.getText();
 
@@ -375,7 +414,7 @@ public class MainController {
             } else {
                 System.out.println("There is no such word in this file");
             }
-        } else {
+        } else { //To translate the desired word, it first translates it into English and from English to the desired language.
             System.out.println("Translation between these languages will be indirectly translated");
             String tempsellangpair1= selectedLanguage1+"_"+ "English";
             String tempsellangpair2="English"+"_"+selectedLanguage2;
@@ -384,11 +423,15 @@ public class MainController {
                 HashMap<String, String> tempLanguageMap2 = languageMaps.get(tempsellangpair2);
                 String translationcheck=tempLanguageMap1.get(Searchword);
                 boolean wordexist =tempLanguageMap2.containsKey(tempLanguageMap1.get(Searchword));
-                String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
+
                 if(translationcheck!=null&&wordexist==true){
+                    String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
                     textArea1.setText(Searchword);
                     textArea2.setText(indirecttranslation);
+
+
                 }
+                else System.out.println("The word you searched for was not found .");
             }
         }
 
