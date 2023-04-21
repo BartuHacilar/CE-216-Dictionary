@@ -47,19 +47,11 @@ public class TEIParser {
 
                 reader.close();
 
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     return maps;
 
     }
-
-
-
 
 }

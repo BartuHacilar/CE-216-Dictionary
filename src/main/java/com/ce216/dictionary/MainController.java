@@ -362,11 +362,6 @@ public class MainController {
                         .anyMatch(key -> key != null && key.matches(regex));
 
                 if(hasMatches){
-                    String regex2 = "(?i)" + tLanguageMap1.get(searchWord) + "\\w*";
-                    boolean hasTranslation = tLanguageMap2.keySet()
-                            .stream()
-                            .anyMatch(key -> key != null && key.matches(regex2));
-                    if (hasTranslation){
                         ArrayList<String>Translatable = new ArrayList<>();
                         for (String key : tLanguageMap1.keySet()) {
                             boolean Translationexist =tLanguageMap2.containsKey(tLanguageMap1.get(key));
@@ -384,7 +379,7 @@ public class MainController {
                                 textArea1.setText(selectedItem);
                             }
                         });
-                    }
+
                 }
 
                 }
@@ -436,14 +431,6 @@ public class MainController {
         }
 
     }
-
-
-
-
-
-
-
-
     public  void Replace(){
         String s1 = comboBox1.getValue();
         String s2 = comboBox2.getValue();

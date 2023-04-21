@@ -84,6 +84,21 @@
                </image>
             </ImageView>
             <ListView fx:id="H_List" layoutX="49.0" layoutY="307.0" prefHeight="200.0" prefWidth="303.0" />
+            <Button fx:id="translateButton1" layoutX="535.0" layoutY="314.0" mnemonicParsing="false" onAction="#Translate" prefHeight="14.0" prefWidth="108.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Add" textAlignment="CENTER" textFill="#41bf24">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="translateButton2" layoutX="535.0" layoutY="389.0" mnemonicParsing="false" onAction="#Translate" prefHeight="34.0" prefWidth="108.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit" textAlignment="CENTER" textFill="#2020bf">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="translateButton3" layoutX="535.0" layoutY="470.0" mnemonicParsing="false" onAction="#Translate" prefHeight="37.0" prefWidth="108.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#d70d0d">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>
