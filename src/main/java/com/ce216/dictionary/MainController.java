@@ -330,6 +330,16 @@ public class MainController {
         if (German_Italian.keySet() == null) {
             System.out.println("German to Italian is empty");
         }
+        H_List.setOnMouseClicked(e -> {
+            String selectedItem = H_List.getSelectionModel().getSelectedItem();
+            if (selectedItem != null) {
+                if(selectedItem.contains("_")){
+                    Languages=selectedItem.split("_");
+                    comboBox1.setValue(Languages[0]);
+                    comboBox2.setValue(Languages[1]);
+                }
+            }
+        });
 
 
         // Displays words that are ready to be translated to the user based on changes made in the text area.
