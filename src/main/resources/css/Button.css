@@ -7,9 +7,11 @@
     -fx-background-color:#CEDBDD;
     -fx-background-radius: 50%;
 }
-.basmayeri:active{
--fx-background-color:#D7D7D7;
-}
+.basmayeri:pressed{
+ -fx-background-color:#aab3b5;
+    -fx-background-radius: 50%;
+    }
+
 .cevirme {
 -fx-background-color: #E5E4E5;
 -fx-border-radius:50%
@@ -18,11 +20,15 @@
 .cevirme:hover {
  -fx-background-color: #CEDBDD ;
 }
-.cevirme:active{
- -fx-border-color: red ;
+.cevirme:pressed{
+ -fx-background-color:#aab3b5;
+    }
+ .anchorpane{
+ -fx-background-image:url("../images/Resim1.png");
+ -fx-background-size:cover;
+ }
+ .textarea{
+ -fx-background-color:#c99868;}
 
-}
-#clearButton:active {
--fx-background-color:red;
-}
+
 

@@ -19,38 +19,61 @@ public class TEIParser {
                 "eng-ita.tei","deu-tur.tei","deu-ita.tei"};
         HashMap<String, String> maps  = new HashMap<>();
 
-            try {
+        try {
             // Define file names and corresponding HashMaps
 
             // Loop through files and read data into HashMaps
 
-                String fileName = fileNames[Selected];
-                System.out.println(TEIParser.class.getResource("/languages/" + fileName));
-                InputStream inputStream = TEIParser.class.getClassLoader().getResourceAsStream("languages/" + fileName);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String fileName = fileNames[Selected];
+            System.out.println(com.ce216.dictionary.TEIParser.class.getResource("/languages/" + fileName));
+            InputStream inputStream = com.ce216.dictionary.TEIParser.class.getClassLoader().getResourceAsStream("languages/" + fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
 
-                String currentOrth = null;
-                String line;
-                while ((line = reader.readLine()) != null) {
+            String currentOrth = null;
+            String line;
+            String currentSynonym="";
+            String currentQuote="";
+            String Complete="";
 
-                        if (line.contains("</orth>")) {
-                            currentOrth = line.replaceAll("<.*?>", "").trim();
-                        } else if (line.contains("</quote>")||line.contains("</def>")) {
-                            String quote = line.replaceAll("<.*?>", "").trim();
-                            maps.put(currentOrth, quote);
-                            if(maps.keySet()==null)
-                                System.out.println("this hashmap is empty");
-                            currentOrth = null;
+
+            while ((line = reader.readLine()) != null) {
+
+                if (line.contains("</orth>")) {
+                    currentOrth = line.replaceAll("<.*?>", "").trim();
+                } else if (line.contains("</quote>") || line.contains("</def>")) {
+                    currentQuote = line.replaceAll("<.*?>", "").trim();
+                    Complete = currentQuote;
+
+                } else if (line.contains("<xr type=\"syn\">")) {
+                    while (!(line.contains("</xr>"))) {
+                        line = reader.readLine();
+                        if (line.contains("</ref>")) {
+                            Complete += ("/synonym: ");
+                            currentSynonym = line.replaceAll("<.*?>", "").trim();
+                            Complete += (currentSynonym);
+
+                        }
 
                     }
-                }
 
-                reader.close();
+                }
+                else if (line.contains("</entry>")) {
+                    maps.put(currentOrth, Complete);
+                    currentOrth = null;
+                    currentQuote = null;
+                    currentSynonym = null;
+                    Complete = null;
+                    if (maps.keySet() == null)
+                        System.out.println("this hashmap is empty");
+                }
+            }
+
+            reader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    return maps;
+        return maps;
 
     }
 

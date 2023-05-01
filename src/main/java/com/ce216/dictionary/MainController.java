@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -45,6 +46,13 @@ public class MainController {
     private AnchorPane root;
     @FXML
     private ListView<String> H_List;
+    @FXML
+    private Button AddButton;
+    @FXML
+    private Button EditButton;
+    @FXML
+    private Button DeleteButton;
+
 
 
 
@@ -88,6 +96,8 @@ public class MainController {
     private HashMap<String,String> Turkish_German;
     private HashMap<String,String> Turkish_English;
 
+    private ArrayList<String[]> History = new ArrayList<>();
+
 
     private TEIParser Parser;
     private String selectedLanguage1;
@@ -100,6 +110,7 @@ public class MainController {
         comboBox1.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
         comboBox1.setOnAction(event -> {
             selectedLanguage1 = comboBox1.getValue().replace(" ", "").trim();
+
         });
 
         comboBox2.setPromptText("Language");
@@ -394,18 +405,26 @@ public class MainController {
         System.out.println("Deleted");
 
     }
+    String[] Synonyms;
+    public String[] Translate(){//Translates the given word in the desired language
 
-    public void Translate(){//Translates the given word in the desired language
+        String[] Boş = new String[0];
 
         String Searchword=textArea1.getText();
-
         String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
         if (languageMaps.containsKey(selectedLanguagePair)) {
             HashMap<String, String> selectedLanguageMap = languageMaps.get(selectedLanguagePair);
             String translation = selectedLanguageMap.get(Searchword);
-            if (translation != null) {
+             Synonyms = translation.split("/synonym: ");
+            String wantedtrans=Synonyms[0];
+            if (wantedtrans != null) {
                 textArea1.setText(Searchword);
-                textArea2.setText(translation);
+                textArea2.setText(wantedtrans);
+                String[] translationhistory = {selectedLanguage1,selectedLanguage2,Searchword,wantedtrans};
+                History.add(translationhistory);
+                return Synonyms;
+
+
             } else {
                 System.out.println("There is no such word in this file");
             }
@@ -421,15 +440,20 @@ public class MainController {
 
                 if(translationcheck!=null&&wordexist==true){
                     String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
+                     Synonyms = indirecttranslation.split("/synonym: ");
+                    String wantedtrans=Synonyms[0];
                     textArea1.setText(Searchword);
-                    textArea2.setText(indirecttranslation);
+                    textArea2.setText(wantedtrans);
+                    String[] translationhistory = {selectedLanguage1,selectedLanguage2,Searchword,wantedtrans};
+                    History.add(translationhistory);
+                    return Synonyms;
 
 
                 }
                 else System.out.println("The word you searched for was not found .");
             }
         }
-
+    return Synonyms;
     }
     public  void Replace(){
         String s1 = comboBox1.getValue();
@@ -438,5 +462,47 @@ public class MainController {
         comboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
         comboBox2.getSelectionModel().select(temp);
     }
+    public void Add(){
 
-}
+    }
+    public void Edit(){
+
+    }
+    public void Delete(){
+
+    }
+    String[]Languages;
+    public void FindLanguage() {
+        String Searchword=textArea1.getText();
+        ArrayList<String>AvailableLanguages=new ArrayList<>();
+
+        H_List.getItems().clear();
+        for (String key : languageMaps.keySet()) {
+            HashMap<String, String> innerHashMap = languageMaps.get(key);
+
+            if (innerHashMap.containsKey(Searchword)) {
+                AvailableLanguages.add(key);
+            }
+        }
+            AvailableLanguages
+                    .stream()
+                    .forEach(H_List.getItems()::add);
+
+
+
+        }
+
+
+
+    public void FindSynonym(){
+            String[]Synonyms=Translate();
+            String synonym="Synonyms are : ";
+            for(int i=1;i< Synonyms.length;i++){
+                synonym+=Synonyms[i];
+                synonym+=",";
+            }
+        textArea2.setText(synonym);
+
+        }
+        }
+
