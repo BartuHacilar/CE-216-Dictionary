@@ -16,7 +16,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="652.0" prefWidth="822.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.MainController">
+
+<VBox alignment="CENTER" prefHeight="652.0" prefWidth="822.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.MainController">
   <children>
     <MenuBar style="-fx-background-color: #c99868;" VBox.vgrow="NEVER">
       <menus>
@@ -57,19 +58,21 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0"  prefHeight="-1.0" prefWidth="-1.0" styleClass="anchorpane" stylesheets="@css/Button.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="anchorpane" stylesheets="@css/Button.css" VBox.vgrow="ALWAYS">
          <children>
             <ComboBox fx:id="comboBox1" layoutX="126.0" layoutY="89.0" opacity="0.85" prefWidth="150.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" />
             <ComboBox fx:id="comboBox2" layoutX="541.0" layoutY="89.0" opacity="0.85" prefWidth="150.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" />
             <TextArea fx:id="textArea1" layoutX="49.0" layoutY="173.0" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css">
                <opaqueInsets>
                   <Insets />
-               </opaqueInsets></TextArea>
+               </opaqueInsets>
+            </TextArea>
             <TextArea fx:id="textArea2" layoutX="457.0" layoutY="173.0" opacity="0.73" prefHeight="110.0" prefWidth="303.0" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" />
             <Label fx:id="titleLabel" alignment="CENTER" layoutX="239.0" layoutY="6.0" prefHeight="34.0" prefWidth="345.0" text="TRANSLATOR" textAlignment="CENTER">
                <font>
                   <Font name="Algerian" size="48.0" />
-               </font></Label>
+               </font>
+            </Label>
             <Button fx:id="replaceButton" layoutX="390.0" layoutY="81.0" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
                   <ImageView fx:id="arrowImageView" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
@@ -77,8 +80,9 @@
                         <Image url="@images/arrow-right-arrow-left-solid.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button fx:id="translateButton" layoutX="261.0" layoutY="573.0" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate" textAlignment="CENTER" textFill="#0f086b">
+               </graphic>
+            </Button>
+            <Button fx:id="translateButton" alignment="TOP_LEFT" layoutX="261.0" layoutY="573.0" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate" textAlignment="CENTER" textFill="#0f086b">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -90,7 +94,8 @@
                         <Image url="@images/x_transparent.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+            </Button>
             <ListView fx:id="H_List" layoutX="50.0" layoutY="354.0" opacity="0.73" prefHeight="200.0" prefWidth="303.0" />
             <Button fx:id="AddButton" alignment="TOP_LEFT" layoutX="530.0" layoutY="317.0" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="14.0" prefWidth="108.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add" textAlignment="CENTER" textFill="#288010">
                <font>
@@ -141,9 +146,14 @@
                   <Font name="Calibri Bold" size="20.0" />
                </font>
             </Button>
-            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="239.0" layoutY="300.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="366.0" layoutY="575.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/languagetranslateicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="29.0" layoutX="239.0" layoutY="303.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/search_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
             </ImageView>
          </children>

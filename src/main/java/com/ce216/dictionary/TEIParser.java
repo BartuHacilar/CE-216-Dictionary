@@ -35,12 +35,16 @@ public class TEIParser {
             String currentQuote="";
             String Complete="";
 
+            boolean isEngEll = fileName.equals("eng-ell.tei");
 
             while ((line = reader.readLine()) != null) {
 
                 if (line.contains("</orth>")) {
                     currentOrth = line.replaceAll("<.*?>", "").trim();
-                } else if (line.contains("</quote>") || line.contains("</def>")) {
+                } else if (line.contains("</quote>")) {
+                    currentQuote = line.replaceAll("<.*?>", "").trim();
+                    Complete = currentQuote;
+                } else if (isEngEll && line.contains("</def>")) {
                     currentQuote = line.replaceAll("<.*?>", "").trim();
                     Complete = currentQuote;
 
@@ -51,11 +55,8 @@ public class TEIParser {
                             Complete += ("/synonym: ");
                             currentSynonym = line.replaceAll("<.*?>", "").trim();
                             Complete += (currentSynonym);
-
                         }
-
                     }
-
                 }
                 else if (line.contains("</entry>")) {
                     maps.put(currentOrth, Complete);
