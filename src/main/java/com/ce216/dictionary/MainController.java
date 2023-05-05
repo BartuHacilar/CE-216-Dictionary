@@ -1,4 +1,5 @@
 package com.ce216.dictionary;
+import com.sun.tools.javac.Main;
 import javafx.collections.FXCollections;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -16,11 +17,154 @@ import java.util.Objects;
 
 public class MainController {
 
+
+    @FXML
+    private AnchorPane AddAnchor;
+
+    @FXML
+    private Button AddButton;
+
+    @FXML
+    private Button AddButton1;
+
+    @FXML
+    private ComboBox<String> AddCombobox1;
+
+    @FXML
+    private ComboBox<String> AddCombobox2;
+
+    @FXML
+    private Button AddDeletebutton;
+
+    @FXML
+    private Button AddGoBack;
+
+    @FXML
+    private Button AddReplaceButton;
+
+    @FXML
+    private TextArea AddTextArea1;
+
+    @FXML
+    private TextArea AddTextArea2;
+
+    @FXML
+    private AnchorPane DeleteAnchor;
+
+    @FXML
+    private Button DeleteButton;
+
+    @FXML
+    private Button DeleteButton1;
+
+    @FXML
+    private ComboBox<String> DeleteCombobox1;
+
+    @FXML
+    private ComboBox<String> DeleteCombobox2;
+
+    @FXML
+    private Button DeleteDeletebutton;
+
+    @FXML
+    private Button DeleteGoBack;
+
+    @FXML
+    private Button DeleteReplaceButton1;
+
+    @FXML
+    private TextArea DeleteTextArea;
+
+    @FXML
+    private TextArea DeleteTextArea2;
+
+
+
+    @FXML
+    private AnchorPane EditAnchor;
+
+    @FXML
+    private Button EditButton;
+
+    @FXML
+    private Button EditButton1;
+
+    @FXML
+    private Button EditGoback;
+
+    @FXML
+    private Button EditclearButton1;
+
+    @FXML
+    private Button EditclearButton2;
+
+    @FXML
+    private ComboBox<String> EditcomboBox1;
+
+    @FXML
+    private ComboBox<String> EditcomboBox2;
+
+    @FXML
+    private Button EditreplaceButton;
+
+    @FXML
+    private TextArea EdittextArea1;
+
+    @FXML
+    private TextArea EdittextArea11;
+
+    @FXML
+    private TextArea EdittextArea12;
+
+
+
+    @FXML
+    private ListView<String> H_List;
+
+    @FXML
+    private ListView<String> H_List2;
+
+    @FXML
+    private AnchorPane HistoryAnchor;
+
+    @FXML
+    private Button HistoryGoback;
+
+    @FXML
+    private Button Languagebutton;
+
+    @FXML
+    private AnchorPane MainAnchor;
+
+    @FXML
+    private Button Synonymbutton;
+
+
+
+
+
+    @FXML
+    private Button clearButton;
+
     @FXML
     private ComboBox<String> comboBox1;
 
     @FXML
     private ComboBox<String> comboBox2;
+
+
+
+    @FXML
+    private ImageView editimage;
+
+    @FXML
+    private ImageView editimage1;
+
+    @FXML
+    private Button replaceButton;
+
+    @FXML
+    private Button HistoryButton;
 
     @FXML
     private TextArea textArea1;
@@ -28,34 +172,12 @@ public class MainController {
     @FXML
     private TextArea textArea2;
 
-    @FXML
-    private Label titleLabel;
 
-    @FXML
-    private Button replaceButton;
-
-    @FXML
-    private ImageView arrowImageView;
 
     @FXML
     private Button translateButton;
 
-    @FXML
-    private Button clearButton;
 
-    @FXML
-    private ImageView xImageView;
-
-    @FXML
-    private AnchorPane root;
-    @FXML
-    private ListView<String> H_List;
-    @FXML
-    private Button AddButton;
-    @FXML
-    private Button EditButton;
-    @FXML
-    private Button DeleteButton;
 
 
 
@@ -101,7 +223,7 @@ public class MainController {
     private HashMap<String,String> Turkish_English;
     HashMap<String,String> Dil_Dosya= new HashMap<>();
 
-    private ArrayList<String[]> History = new ArrayList<>();
+    private ArrayList<String> History = new ArrayList<>();
 
 
     private TEIParser Parser;
@@ -130,6 +252,7 @@ public class MainController {
 
         Parser = new TEIParser();
         H_List.setItems(FXCollections.observableArrayList());
+        H_List2.setItems(FXCollections.observableArrayList());
 
         //The TeiParser class puts words into hashmaps for translation of languages, and hashmaps are created for each language pair variation.
         German_ModernGreek = Parser.Parsing(0);
@@ -479,12 +602,9 @@ public class MainController {
             if (wantedtrans != null) {
                 textArea1.setText(Searchword);
                 textArea2.setText(wantedtrans);
-                String[] translationhistory = {selectedLanguage1,selectedLanguage2,Searchword,wantedtrans};
+                String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+" Translation is :"+wantedtrans;
                 History.add(translationhistory);
                 return Synonyms;
-
-
-
 
             } else {
                 System.out.println("There is no such word in this file");
@@ -505,7 +625,7 @@ public class MainController {
                     String wantedtrans=Synonyms[0];
                     textArea1.setText(Searchword);
                     textArea2.setText(wantedtrans);
-                    String[] translationhistory = {selectedLanguage1,selectedLanguage2,Searchword,wantedtrans};
+                    String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+" Translation is :"+wantedtrans;
                     History.add(translationhistory);
                     return Synonyms;
 
@@ -524,6 +644,8 @@ public class MainController {
         comboBox2.getSelectionModel().select(temp);
     }
     public void Add() throws IOException {
+        MainAnchor.setVisible(false);
+        AddAnchor.setVisible(true);
         String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
         if (Dil_Dosya.containsKey(selectedLanguagePair)){
             String dosyaname = Dil_Dosya.get(selectedLanguagePair);
@@ -655,6 +777,8 @@ public class MainController {
 
 
     public void Delete() throws IOException {
+        MainAnchor.setVisible(false);
+        DeleteAnchor.setVisible(true);
         // Get the value from the first TextArea
         String word = textArea1.getText();
 
@@ -776,5 +900,33 @@ public class MainController {
         textArea2.setText(synonym);
 
         }
-        }
+
+    public void GoBackFromAddToMain(){
+        AddAnchor.setVisible(false);
+        MainAnchor.setVisible(true);
+    }
+    public void GoBackFromEditToMain(){
+        EditAnchor.setVisible(false);
+        MainAnchor.setVisible(true);
+    }
+    public void GoBackFromDeleteToMain(){
+        DeleteAnchor.setVisible(false);
+        MainAnchor.setVisible(true);
+    }
+    public void GoBackFromHistoryToMain(){
+        HistoryAnchor.setVisible(false);
+        MainAnchor.setVisible(true);
+        H_List2.getItems().clear();
+    }
+    public void History(){
+        MainAnchor.setVisible(false);
+        HistoryAnchor.setVisible(true);
+
+        History.stream().forEach(
+                H_List2.getItems()::add);
+
+    }
+
+}
+
 

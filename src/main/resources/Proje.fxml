@@ -10,74 +10,288 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="912.0" prefWidth="1301.0" styleClass="anchorpane" stylesheets="@css/Button.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.MainController">
+
+<StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.MainController">
    <children>
-      <VBox layoutX="139.0" layoutY="239.0" prefHeight="189.0" prefWidth="957.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="49.0">
+      <AnchorPane fx:id="EditAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
          <children>
-            <HBox prefHeight="110.0" prefWidth="977.0">
+            <Button fx:id="EditButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="698.0" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="editimage1" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="13.0" prefHeight="61.0" prefWidth="804.0">
                <children>
-                  <TextArea fx:id="textArea1" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <Label fx:id="EdittitleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Algerian" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="EditGoback" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromEditToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/arrow_back_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox layoutX="145.0" layoutY="283.0" prefHeight="110.0" prefWidth="381.0">
+               <children>
+                  <TextArea fx:id="EdittextArea1" opacity="0.73" prefHeight="110.0" prefWidth="335.0" promptText="Enter which word you want to edit" styleClass="textarea" stylesheets="@css/Button.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                  <Button fx:id="EditclearButton1" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                      <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView">
+                        <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView111">
                            <image>
                               <Image url="@images/x_transparent.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextArea fx:id="textArea2" opacity="0.73" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="85.0" layoutY="125.0" prefHeight="158.0" prefWidth="980.0">
+               <children>
+                  <ComboBox fx:id="EditcomboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="EditreplaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fx:id="arrowImageView111" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@images/arrow-right-arrow-left-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ComboBox fx:id="EditcomboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <HBox layoutX="145.0" layoutY="480.0" prefHeight="110.0" prefWidth="977.0">
+               <children>
+                  <TextArea fx:id="EdittextArea11" opacity="0.73" prefHeight="110.0" prefWidth="303.0" promptText="Enter how should be the edited version of word" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextArea>
+                  <Button fx:id="EditclearButton2" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView1111">
+                           <image>
+                              <Image url="@images/x_transparent.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextArea fx:id="EdittextArea12" opacity="0.73" prefHeight="110.0" prefWidth="321.0" promptText="Enter how should be the edited version of translation" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="240.0" />
                      </HBox.margin>
                   </TextArea>
                </children>
             </HBox>
-            <Button fx:id="Languagebutton" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#FindLanguage" opacity="0.87" prefHeight="41.0" prefWidth="222.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Available Languages" textAlignment="CENTER" textFill="#652cb5">
-               <font>
-                  <Font name="Calibri Bold" size="19.0" />
-               </font>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="DeleteAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
+         <children>
+            <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="13.0" prefHeight="61.0" prefWidth="804.0">
+               <children>
+                  <Label fx:id="DeleteTitleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Algerian" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="DeleteGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromDeleteToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/search_FILL0_wght400_GRAD0_opsz48.png" />
+                        <Image url="@images/arrow_back_FILL0_wght400_GRAD0_opsz48.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
+            </Button>
+            <HBox layoutX="145.0" layoutY="387.0" prefHeight="110.0" prefWidth="977.0">
+               <children>
+                  <TextArea fx:id="DeleteTextArea" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextArea>
+                  <Button fx:id="DeleteDeletebutton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView11">
+                           <image>
+                              <Image url="@images/x_transparent.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextArea fx:id="DeleteTextArea2" opacity="0.73" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="240.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="103.0" layoutY="171.0" prefHeight="158.0" prefWidth="980.0">
+               <children>
+                  <ComboBox fx:id="DeleteCombobox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="DeleteReplaceButton1" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fx:id="arrowImageView11" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@images/arrow-right-arrow-left-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ComboBox fx:id="DeleteCombobox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <Button fx:id="DeleteButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="582.0" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="deleteimage1" fitHeight="34.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
-      </VBox>
-      <VBox fillWidth="false" layoutX="507.0" layoutY="20.0" prefHeight="61.0" prefWidth="345.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="449.0">
+      </AnchorPane>
+      <AnchorPane fx:id="MainAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="912.0" prefWidth="1301.0" styleClass="anchorpane" stylesheets="@css/Button.css">
          <children>
-            <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="Algerian" size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER_RIGHT" layoutX="374.0" layoutY="781.0" prefHeight="54.0" prefWidth="611.0" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="316.0">
-         <children>
-            <HBox alignment="CENTER" fillHeight="false" prefHeight="54.0" prefWidth="1240.0">
+            <VBox layoutX="139.0" layoutY="239.0" prefHeight="189.0" prefWidth="957.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="49.0">
                <children>
-                  <Button fx:id="translateButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate   " textAlignment="CENTER" textFill="#0f086b">
+                  <HBox prefHeight="110.0" prefWidth="977.0">
+                     <children>
+                        <TextArea fx:id="textArea1" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextArea>
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView">
+                                 <image>
+                                    <Image url="@images/x_transparent.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextArea fx:id="textArea2" opacity="0.73" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="240.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
+                  <Button fx:id="Languagebutton" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#FindLanguage" opacity="0.87" prefHeight="41.0" prefWidth="222.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Available Languages" textAlignment="CENTER" textFill="#652cb5">
                      <font>
-                        <Font name="Calibri Bold" size="20.0" />
+                        <Font name="Calibri Bold" size="19.0" />
                      </font>
                      <graphic>
-                        <ImageView cache="true" fitHeight="34.0" fitWidth="28.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="37.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/languagetranslateicon.png" />
+                              <Image url="@images/search_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fillWidth="false" layoutX="507.0" layoutY="20.0" prefHeight="61.0" prefWidth="345.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="449.0">
+               <children>
+                  <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Algerian" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" layoutX="374.0" layoutY="781.0" prefHeight="54.0" prefWidth="611.0" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="316.0">
+               <children>
+                  <HBox alignment="CENTER" fillHeight="false" prefHeight="54.0" prefWidth="1240.0">
+                     <children>
+                        <Button fx:id="translateButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate   " textAlignment="CENTER" textFill="#0f086b">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView cache="true" fitHeight="34.0" fitWidth="28.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/languagetranslateicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="Synonymbutton" alignment="CENTER" mnemonicParsing="false" onAction="#FindSynonym" opacity="0.87" prefHeight="42.0" prefWidth="156.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Find Synonyms" textAlignment="CENTER" textFill="#55839a" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="300.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" layoutX="139.0" layoutY="81.0" prefHeight="158.0" prefWidth="980.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="182.0">
+               <children>
+                  <Button fx:id="HistoryButton" mnemonicParsing="false" onAction="#History" opacity="0.78" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#ddd0c3" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/history.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -85,102 +299,184 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="Synonymbutton" alignment="CENTER" mnemonicParsing="false" onAction="#FindSynonym" opacity="0.87" prefHeight="42.0" prefWidth="156.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Find Synonyms" textAlignment="CENTER" textFill="#55839a" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="comboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="120.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="replaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fx:id="arrowImageView" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@images/arrow-right-arrow-left-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ComboBox fx:id="comboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="250.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER_RIGHT" layoutX="1066.0" layoutY="438.0" prefHeight="289.0" prefWidth="121.0" AnchorPane.rightAnchor="114.0">
+               <children>
+                  <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets left="300.0" />
-                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="addimage" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="editimage" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="deleteimage" fitHeight="34.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
                   </Button>
                </children>
+            </VBox>
+            <ListView fx:id="H_List" layoutX="139.0" layoutY="456.0" opacity="0.73" prefHeight="289.0" prefWidth="443.0" stylesheets="@css/Listview.css" AnchorPane.leftAnchor="139.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="HistoryAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
+         <children>
+            <ListView fx:id="H_List2" layoutX="67.0" layoutY="217.0" opacity="0.73" prefHeight="635.0" prefWidth="1168.0" stylesheets="@css/Listview.css" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="66.0" />
+            <HBox alignment="TOP_CENTER" layoutX="246.0" layoutY="14.0" prefHeight="61.0" prefWidth="804.0" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="251.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <Label fx:id="titleLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Algerian" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
             </HBox>
-         </children>
-      </VBox>
-      <HBox alignment="CENTER" layoutX="139.0" layoutY="81.0" prefHeight="158.0" prefWidth="980.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="182.0">
-         <children>
-            <Button fx:id="replaceButton1" mnemonicParsing="false" onAction="#Replace" opacity="0.78" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#ddd0c3" HBox.hgrow="ALWAYS">
+            <Button fx:id="HistoryGoback" alignment="TOP_LEFT" layoutX="67.0" layoutY="32.0" mnemonicParsing="false" onAction="#GoBackFromHistoryToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/history.png" />
+                        <Image url="@images/arrow_back_FILL0_wght400_GRAD0_opsz48.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
             </Button>
-            <ComboBox fx:id="comboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets left="120.0" />
-               </HBox.margin>
-            </ComboBox>
-            <Button fx:id="replaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AddAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
+         <children>
+            <HBox alignment="TOP_CENTER" layoutX="249.0" layoutY="13.0" prefHeight="61.0" prefWidth="804.0">
+               <children>
+                  <Label fx:id="titleLabel11" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="1301.0" text="TRANSLATOR" textAlignment="CENTER" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Algerian" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="AddGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromAddToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
-                  <ImageView fx:id="arrowImageView" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
+                  <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/arrow-right-arrow-left-solid.png" />
+                        <Image url="@images/arrow_back_FILL0_wght400_GRAD0_opsz48.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <HBox.margin>
-                  <Insets left="150.0" />
-               </HBox.margin>
             </Button>
-            <ComboBox fx:id="comboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets left="250.0" />
-               </HBox.margin>
-            </ComboBox>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER_RIGHT" layoutX="1066.0" layoutY="438.0" prefHeight="289.0" prefWidth="121.0" AnchorPane.rightAnchor="114.0">
-         <children>
-            <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
+            <Button fx:id="AddButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="607.0" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="addimage" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="addimage1" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/add.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
-               <font>
-                  <Font name="Calibri Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fx:id="editimage" fitHeight="29.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="80.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
-               <font>
-                  <Font name="Calibri Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fx:id="deleteimage" fitHeight="34.0" fitWidth="29.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/delete.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets top="80.0" />
-               </VBox.margin>
-            </Button>
+            <HBox layoutX="145.0" layoutY="387.0" prefHeight="110.0" prefWidth="977.0">
+               <children>
+                  <TextArea fx:id="AddTextArea1" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextArea>
+                  <Button fx:id="AddDeletebutton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView1">
+                           <image>
+                              <Image url="@images/x_transparent.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextArea fx:id="AddTextArea2" opacity="0.73" prefHeight="110.0" prefWidth="321.0" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="240.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="103.0" layoutY="171.0" prefHeight="158.0" prefWidth="980.0">
+               <children>
+                  <ComboBox fx:id="AddCombobox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="AddReplaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fx:id="arrowImageView1" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@images/arrow-right-arrow-left-solid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ComboBox fx:id="AddCombobox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
          </children>
-      </VBox>
-      <ListView fx:id="H_List" layoutX="139.0" layoutY="456.0" opacity="0.73" prefHeight="289.0" prefWidth="443.0" stylesheets="@css/Listview.css" AnchorPane.leftAnchor="139.0" />
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
