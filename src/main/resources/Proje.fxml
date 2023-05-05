@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.MainController">
    <children>
       <AnchorPane fx:id="EditAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
@@ -51,7 +50,7 @@
             </Button>
             <HBox layoutX="145.0" layoutY="283.0" prefHeight="110.0" prefWidth="381.0">
                <children>
-                  <TextArea fx:id="EdittextArea1" opacity="0.73" prefHeight="110.0" prefWidth="335.0" promptText="Enter which word you want to edit" styleClass="textarea" stylesheets="@css/Button.css">
+                  <TextArea fx:id="EditTextArea1" opacity="0.73" prefHeight="110.0" prefWidth="335.0" promptText="Enter which word you want to edit" styleClass="textarea" stylesheets="@css/Button.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -69,7 +68,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="85.0" layoutY="125.0" prefHeight="158.0" prefWidth="980.0">
                <children>
-                  <ComboBox fx:id="EditcomboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="EditComboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="70.0" />
                      </HBox.margin>
@@ -86,7 +85,7 @@
                         <Insets left="150.0" />
                      </HBox.margin>
                   </Button>
-                  <ComboBox fx:id="EditcomboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="EditComboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="150.0" />
                      </HBox.margin>
@@ -95,7 +94,7 @@
             </HBox>
             <HBox layoutX="145.0" layoutY="480.0" prefHeight="110.0" prefWidth="977.0">
                <children>
-                  <TextArea fx:id="EdittextArea11" opacity="0.73" prefHeight="110.0" prefWidth="303.0" promptText="Enter how should be the edited version of word" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <TextArea fx:id="EditTextArea11" opacity="0.73" prefHeight="110.0" prefWidth="303.0" promptText="Enter how should be the edited version of word" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -109,7 +108,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextArea fx:id="EdittextArea12" opacity="0.73" prefHeight="110.0" prefWidth="321.0" promptText="Enter how should be the edited version of translation" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <TextArea fx:id="EditTextArea12" opacity="0.73" prefHeight="110.0" prefWidth="321.0" promptText="Enter how should be the edited version of translation" style="-fx-background-color: #FAE6C5;" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="240.0" />
                      </HBox.margin>
@@ -140,7 +139,7 @@
             </Button>
             <HBox layoutX="145.0" layoutY="387.0" prefHeight="110.0" prefWidth="977.0">
                <children>
-                  <TextArea fx:id="DeleteTextArea" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <TextArea fx:id="DeleteTextArea1" opacity="0.73" prefHeight="110.0" prefWidth="303.0" styleClass="textarea" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -163,7 +162,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="103.0" layoutY="171.0" prefHeight="158.0" prefWidth="980.0">
                <children>
-                  <ComboBox fx:id="DeleteCombobox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="DeleteComboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="70.0" />
                      </HBox.margin>
@@ -180,7 +179,7 @@
                         <Insets left="150.0" />
                      </HBox.margin>
                   </Button>
-                  <ComboBox fx:id="DeleteCombobox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="DeleteComboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="150.0" />
                      </HBox.margin>
@@ -325,7 +324,7 @@
             </HBox>
             <VBox alignment="CENTER_RIGHT" layoutX="1066.0" layoutY="438.0" prefHeight="289.0" prefWidth="121.0" AnchorPane.rightAnchor="114.0">
                <children>
-                  <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
+                  <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#AddButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -337,7 +336,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
+                  <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#EditButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -352,7 +351,7 @@
                         <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
+                  <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#DeleteButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -452,7 +451,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="103.0" layoutY="171.0" prefHeight="158.0" prefWidth="980.0">
                <children>
-                  <ComboBox fx:id="AddCombobox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="AddComboBox1" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="70.0" />
                      </HBox.margin>
@@ -469,7 +468,7 @@
                         <Insets left="150.0" />
                      </HBox.margin>
                   </Button>
-                  <ComboBox fx:id="AddCombobox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
+                  <ComboBox fx:id="AddComboBox2" opacity="0.85" prefHeight="43.0" prefWidth="191.0" promptText="Language" style="-fx-background-color: #d3c1ae;" styleClass="lan-select" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="150.0" />
                      </HBox.margin>

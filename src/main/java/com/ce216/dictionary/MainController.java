@@ -1,7 +1,5 @@
 package com.ce216.dictionary;
-import com.sun.tools.javac.Main;
 import javafx.collections.FXCollections;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -10,7 +8,6 @@ import javafx.scene.layout.AnchorPane;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -28,10 +25,14 @@ public class MainController {
     private Button AddButton1;
 
     @FXML
-    private ComboBox<String> AddCombobox1;
+    private ComboBox<String> AddComboBox1;
+
+
 
     @FXML
-    private ComboBox<String> AddCombobox2;
+    private ComboBox<String> AddComboBox2;
+
+
 
     @FXML
     private Button AddDeletebutton;
@@ -58,10 +59,10 @@ public class MainController {
     private Button DeleteButton1;
 
     @FXML
-    private ComboBox<String> DeleteCombobox1;
+    private ComboBox<String> DeleteComboBox1;
 
     @FXML
-    private ComboBox<String> DeleteCombobox2;
+    private ComboBox<String> DeleteComboBox2;
 
     @FXML
     private Button DeleteDeletebutton;
@@ -73,7 +74,7 @@ public class MainController {
     private Button DeleteReplaceButton1;
 
     @FXML
-    private TextArea DeleteTextArea;
+    private TextArea DeleteTextArea1;
 
     @FXML
     private TextArea DeleteTextArea2;
@@ -99,22 +100,22 @@ public class MainController {
     private Button EditclearButton2;
 
     @FXML
-    private ComboBox<String> EditcomboBox1;
+    private ComboBox<String> EditComboBox1;
 
     @FXML
-    private ComboBox<String> EditcomboBox2;
+    private ComboBox<String> EditComboBox2;
 
     @FXML
     private Button EditreplaceButton;
 
     @FXML
-    private TextArea EdittextArea1;
+    private TextArea EditTextArea1;
 
     @FXML
-    private TextArea EdittextArea11;
+    private TextArea EditTextArea11;
 
     @FXML
-    private TextArea EdittextArea12;
+    private TextArea EditTextArea12;
 
 
 
@@ -140,11 +141,9 @@ public class MainController {
     private Button Synonymbutton;
 
 
-
-
-
     @FXML
     private Button clearButton;
+
 
     @FXML
     private ComboBox<String> comboBox1;
@@ -229,6 +228,12 @@ public class MainController {
     private TEIParser Parser;
     private String selectedLanguage1;
     private String selectedLanguage2;
+    private String DeleteSelectedLanguage1;
+    private String DeleteSelectedLanguage2;
+    private String AddSelectedLanguage1;
+    private String AddSelectedLanguage2;
+    private String EditSelectedLanguage1;
+    private String EditSelectedLanguage2;
     HashMap<String, HashMap<String, String>> languageMaps = new HashMap<>();
 
     public void initialize() {
@@ -249,6 +254,70 @@ public class MainController {
         // set the text for the text areas
         textArea1.setPromptText("Enter text here");
         textArea2.setPromptText("Translated text will appear here");
+
+
+        // set the prompt text and items for the combo boxes
+        AddComboBox1.setPromptText("Language");
+        AddComboBox1.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        AddComboBox1.setOnAction(event -> {
+            AddSelectedLanguage1 = AddComboBox1.getValue().replace(" ", "").trim();
+
+        });
+
+        AddComboBox2.setPromptText("Language");
+        AddComboBox2.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        AddComboBox2.setOnAction(event -> {
+            AddSelectedLanguage2 = AddComboBox2.getValue().replace(" ", "").trim();
+        });
+
+        // set the text for the text areas
+        AddTextArea1.setPromptText("Enter text here");
+        AddTextArea2.setPromptText("Translated text will appear here");
+
+
+
+
+        // set the prompt text and items for the combo boxes
+        EditComboBox1.setPromptText("Language");
+        EditComboBox1.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        EditComboBox1.setOnAction(event -> {
+            EditSelectedLanguage1 = EditComboBox1.getValue().replace(" ", "").trim();
+
+        });
+
+        EditComboBox2.setPromptText("Language");
+        EditComboBox2.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        EditComboBox2.setOnAction(event -> {
+            EditSelectedLanguage2 = EditComboBox2.getValue().replace(" ", "").trim();
+        });
+
+        // set the text for the text areas
+        EditTextArea1.setPromptText("Enter which word you want to edit");
+        EditTextArea11.setPromptText("Enter how should be the edited version of word");
+        EditTextArea12.setPromptText("Enter how should be the edited version of translation");
+
+
+
+
+        // set the prompt text and items for the combo boxes
+        DeleteComboBox1.setPromptText("Language");
+        DeleteComboBox1.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        DeleteComboBox1.setOnAction(event -> {
+            DeleteSelectedLanguage1 = DeleteComboBox1.getValue().replace(" ", "").trim();
+
+        });
+
+        DeleteComboBox2.setPromptText("Language");
+        DeleteComboBox2.getItems().addAll("English","French","German","Turkish","Italian","Swedish" ,"Modern Greek");
+        DeleteComboBox2.setOnAction(event -> {
+            DeleteSelectedLanguage2 = DeleteComboBox2.getValue().replace(" ", "").trim();
+        });
+
+        // set the text for the text areas
+        DeleteTextArea1.setPromptText("Enter text here");
+        DeleteTextArea2.setPromptText("Translated text will appear here");
+
+
 
         Parser = new TEIParser();
         H_List.setItems(FXCollections.observableArrayList());
@@ -510,7 +579,7 @@ public class MainController {
                     comboBox1.setValue(Languages[0]);
                     comboBox2.setValue(Languages[1]);
                 }
-                else{
+                else if (!selectedItem.contains("_")){
                     textArea1.setText(selectedItem);
                 }
 
@@ -568,12 +637,6 @@ public class MainController {
                                 .stream()
                                 .filter(key -> key != null && key.matches(regex))
                                 .forEach(H_List.getItems()::add);
-                        H_List.setOnMouseClicked(e -> {
-                            String selectedItem = H_List.getSelectionModel().getSelectedItem();
-                            if (selectedItem != null) {
-                                textArea1.setText(selectedItem);
-                            }
-                        });
 
                 }
 
@@ -637,23 +700,22 @@ public class MainController {
     return Synonyms;
     }
     public  void Replace(){
-        String s1 = comboBox1.getValue();
+        String s1 = EditComboBox1.getValue();
         String s2 = comboBox2.getValue();
-        int temp = comboBox1.getSelectionModel().getSelectedIndex();
-        comboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
+        int temp = EditComboBox1.getSelectionModel().getSelectedIndex();
+        EditComboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
         comboBox2.getSelectionModel().select(temp);
     }
     public void Add() throws IOException {
-        MainAnchor.setVisible(false);
-        AddAnchor.setVisible(true);
-        String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
+
+        String selectedLanguagePair = AddSelectedLanguage1 + "_" + AddSelectedLanguage2;
         if (Dil_Dosya.containsKey(selectedLanguagePair)){
             String dosyaname = Dil_Dosya.get(selectedLanguagePair);
             InputStream inputStream = com.ce216.dictionary.MainController.class.getResourceAsStream("/languages/" + dosyaname);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             ArrayList<String> lines = new ArrayList<>();
-            String word = textArea1.getText();
-            String translation = textArea2.getText();
+            String word = AddTextArea1.getText();
+            String translation = AddTextArea2.getText();
 
             // Check that both values are non-empty
             if (word.isEmpty() || translation.isEmpty()) {
@@ -671,7 +733,6 @@ public class MainController {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/main/resources/languages/" + dosyaname, true), StandardCharsets.UTF_8));
 
             if (languageMaps.containsKey(selectedLanguagePair)) {
-                writer.newLine();
                 writer.write("<entry>");
                 writer.newLine();
                 writer.write("<orth>"+word+"</orth>");
@@ -691,17 +752,14 @@ public class MainController {
 
 
     public void Edit() throws IOException {
-        MainAnchor.setVisible(false);
-        EditAnchor.setVisible(true);
 
-
-// Get the value from the first TextArea
-        String word = textArea1.getText();
-        String wordd= textArea2.getText();
-
+        // Get the value from the first TextArea
+        String word = EditTextArea1.getText();
+        String wordd = EditTextArea11.getText();
+        String worddd = EditTextArea12.getText();
 
         // Check if the selected language pair exists in languageMaps
-        String languagePair = selectedLanguage1 + "_" + selectedLanguage2;
+        String languagePair = EditSelectedLanguage1 + "_" + EditSelectedLanguage2;
         if (!languageMaps.containsKey(languagePair)) {
             System.out.println("No translations found for the selected language pair.");
             return;
@@ -716,23 +774,37 @@ public class MainController {
             return;
         }
 
-
-
-        /*languageMap.put(newWord, languageMap.remove(word));
-
-        String dosyaname = Dil_Dosya.get(languagePair);
-        File file = new File("src/main/resources/languages/" + dosyaname);
-        ArrayList<String> fileContent = new ArrayList<>(Files.readAllLines(file.toPath()));
-        for (int i = 0; i < fileContent.size(); i++) {
-            if (fileContent.get(i).contains("<orth>" + word + "</orth>")||fileContent.get(i).contains("<quote>" + word + "</quote>")) {
-                fileContent.set(i, fileContent.get(i).replace(word, newWord));
-                break;
-            }
+        // Check if the user input is for updating the key or value
+        if (!wordd.isEmpty() && !worddd.isEmpty()) {
+            // Update the language map with the edited key
+            languageMap.put(wordd, languageMap.get(word));
+            languageMap.remove(word);
+            // Update the UI to reflect the changes
+            EditTextArea1.setText(wordd);
+            languageMap.put(wordd,worddd);
+        }
+        else if(!wordd.isEmpty() && worddd.isEmpty()){
+            languageMap.put(wordd, languageMap.get(word));
+            languageMap.remove(word);
+            EditTextArea1.setText(wordd);
+        }
+        else if(wordd.isEmpty() && !worddd.isEmpty()){
+            languageMap.put(word,worddd);
+        }
+        /*else if (!worddd.isEmpty()) {
+            // Update the language map with the edited value
+            languageMap.put(word, worddd);
+            // Update the UI to reflect the changes
+            EditTextArea1.setText(worddd);
+        }
+        */
+        else {
+            System.out.println("Please enter a value for either the key or value field.");
+            return;
         }
 
-         */
-       // Files.write(file.toPath(), fileContent);
-
+        // Update the languageMaps object with the updated language map
+        languageMaps.put(languagePair, languageMap);
         System.out.println("Word edited.");
     }
 
@@ -745,11 +817,12 @@ public class MainController {
 
 
 
+
+
     public void Delete() throws IOException {
-        MainAnchor.setVisible(false);
-        DeleteAnchor.setVisible(true);
+
         // Get the value from the first TextArea
-        String word = textArea1.getText();
+        String word = DeleteTextArea1.getText();
 
         // Check that the value is non-empty
         if (word.isEmpty()) {
@@ -758,7 +831,7 @@ public class MainController {
         }
 
         // Check if the selected language pair exists in languageMaps
-        String languagePair = selectedLanguage1 + "_" + selectedLanguage2;
+        String languagePair = DeleteSelectedLanguage1 + "_" + DeleteSelectedLanguage2;
         if (!languageMaps.containsKey(languagePair)) {
             System.out.println("No translations found for the selected language pair.");
             return;
@@ -829,7 +902,6 @@ public class MainController {
                String engtolang2="English"+"_"+secondlang;
 
             if(languageMaps.containsKey(lang1toeng)&&languageMaps.containsKey(engtolang2)) {
-                System.out.println(lang1toeng+engtolang2);
                 HashMap<String, String> tempLanguageMap1 = languageMaps.get(lang1toeng);
                 HashMap<String, String> tempLanguageMap2 = languageMaps.get(engtolang2);
                 String translationcheck=tempLanguageMap1.get(Searchword);
@@ -895,6 +967,26 @@ public class MainController {
                 H_List2.getItems()::add);
 
     }
+    public void AddButton(){
+        MainAnchor.setVisible(false);
+        AddAnchor.setVisible(true);
+
+    }
+
+    public void DeleteButton(){
+        MainAnchor.setVisible(false);
+        DeleteAnchor.setVisible(true);
+
+    }
+
+    public void EditButton(){
+        MainAnchor.setVisible(false);
+        EditAnchor.setVisible(true);
+
+    }
+
+
+
 
 }
 
