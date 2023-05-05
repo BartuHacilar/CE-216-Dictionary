@@ -1,0 +1,56 @@
+.list-cell:odd {
+    -fx-background-color:  #e2d8c6;
+}
+
+.list-cell:even {
+    -fx-background-color: #cdbbae;
+}
+
+.list-view {
+    -fx-background-radius: 20px;
+    -fx-background-color: #d7ccc8;
+}
+
+.list-cell, .list-cell::focused {
+
+
+    -fx-border-width: 2px;
+}
+
+.list-cell {
+
+
+    -fx-border-radius: 20px;
+    -fx-font-size: 16pt;
+    -fx-text-overrun: ellipsis;
+    -fx-wrap-text: true;
+    -fx-text-fill: black;
+
+}
+.list-cell:pressed, .list-cell:chosen {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+}
+
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: #6d4c41;
+    -fx-padding: 2px;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #d7ccc8;
+}
+
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
+    -fx-background-color: #d7ccc8;
+    -fx-shape: "M 6 1 L 10 10 L 2 10 Z, M 2 1 L 10 1 L 6 10 Z";
+}
+
+.list-view .scroll-bar:vertical .increment-arrow,
+.list-view .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #d7ccc8;
+    -fx-shape: "M 6 1 L 10 10 L 2 10 Z, M 2 1 L 10 1 L 6 10 Z";
+}
+
