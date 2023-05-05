@@ -691,15 +691,14 @@ public class MainController {
 
 
     public void Edit() throws IOException {
-        // Get the values from the TextAreas
-        String word1 = textArea1.getText();
-        String word2 = textArea2.getText();
+        MainAnchor.setVisible(false);
+        EditAnchor.setVisible(true);
 
-        // Check that at least one value is non-empty
-        if (word1.isEmpty() && word2.isEmpty()) {
-            System.out.println("Please enter a word to edit.");
-            return;
-        }
+
+// Get the value from the first TextArea
+        String word = textArea1.getText();
+        String wordd= textArea2.getText();
+
 
         // Check if the selected language pair exists in languageMaps
         String languagePair = selectedLanguage1 + "_" + selectedLanguage2;
@@ -711,66 +710,36 @@ public class MainController {
         // Get the language map for the selected language pair
         HashMap<String, String> languageMap = languageMaps.get(languagePair);
 
-        // Check if either word exists in the language map
-        if (!word1.isEmpty() && !languageMap.containsKey(word1)) {
-            System.out.println("The word '" + word1 + "' does not exist in the language map.");
-            return;
-        }
-        if (!word2.isEmpty() && !languageMap.containsKey(word2)) {
-            System.out.println("The word '" + word2 + "' does not exist in the language map.");
+        // Check if the word exists in the language map
+        if (!languageMap.containsKey(word)) {
+            System.out.println("The word does not exist in the language map.");
             return;
         }
 
-        // Replace the words and their translations in the language map
-        if (!word1.isEmpty()) {
-            String translation = languageMap.get(word1);
-            languageMap.remove(word1);
-            if (!word2.isEmpty()) {
-                languageMap.put(word2, translation);
-            }
-        }
-        if (!word2.isEmpty()) {
-            String translation = languageMap.get(word2);
-            languageMap.remove(word2);
-            if (!word1.isEmpty()) {
-                languageMap.put(word1, translation);
-            }
-        }
 
-        // Write the updated language map to the language file
+
+        /*languageMap.put(newWord, languageMap.remove(word));
+
         String dosyaname = Dil_Dosya.get(languagePair);
         File file = new File("src/main/resources/languages/" + dosyaname);
         ArrayList<String> fileContent = new ArrayList<>(Files.readAllLines(file.toPath()));
         for (int i = 0; i < fileContent.size(); i++) {
-            String line = fileContent.get(i);
-            if (!word1.isEmpty() && line.contains("<orth>" + word1 + "</orth>")) {
-                String newText = "<orth>" + word2 + "</orth>";
-                line = line.replace("<orth>" + word1 + "</orth>", newText);
-                fileContent.set(i, line);
-                if (!word2.isEmpty()) {
-                    String translation = languageMap.get(word2);
-                    newText = "<quote>" + translation + "</quote>";
-                    line = fileContent.get(i+1);
-                    line = line.replace("<quote>" + word1 + "</quote>", newText);
-                    fileContent.set(i+1, line);
-                }
-            }
-            if (!word2.isEmpty() && line.contains("<orth>" + word2 + "</orth>")) {
-                String newText = "<orth>" + word1 + "</orth>";
-                line = line.replace("<orth>" + word2 + "</orth>", newText);
-                fileContent.set(i, line);
-                if (!word1.isEmpty()) {
-                    String translation = languageMap.get(word1);
-                    newText = "<quote>" + translation + "</quote>";
-                    line = fileContent.get(i+1);
-                    line = line.replace("<quote>" + word2 + "</quote>", newText);
-                    fileContent.set(i+1, line);
-                }
+            if (fileContent.get(i).contains("<orth>" + word + "</orth>")||fileContent.get(i).contains("<quote>" + word + "</quote>")) {
+                fileContent.set(i, fileContent.get(i).replace(word, newWord));
+                break;
             }
         }
-        Files.write(file.toPath(), fileContent);
-        System.out.println("Words edited.");
+
+         */
+       // Files.write(file.toPath(), fileContent);
+
+        System.out.println("Word edited.");
     }
+
+
+
+
+
 
 
 
