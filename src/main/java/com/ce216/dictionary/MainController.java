@@ -387,11 +387,12 @@ public class MainController {
                     comboBox1.setValue(Languages[0]);
                     comboBox2.setValue(Languages[1]);
                 }
-
-                }
                 else{
                     textArea1.setText(selectedItem);
                 }
+
+                }
+
             }
         );
 
