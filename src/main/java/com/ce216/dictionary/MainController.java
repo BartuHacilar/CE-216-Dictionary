@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MainController {
 
@@ -369,24 +370,24 @@ public class MainController {
             System.out.println("German to Italian is empty");
         }
         Dil_Dosya.put("German_Italian","deu-ita.tei");
-
-
-
+        
         H_List.setOnMouseClicked(e -> {
             String selectedItem = H_List.getSelectionModel().getSelectedItem();
             if (selectedItem != null) {
                 if(selectedItem.contains("_")){
                     Languages=selectedItem.split("_");
-                    if(Languages[0]=="ModernGreek"){
+                    if(Objects.equals(Languages[0], "ModernGreek")){
                         Languages[0]="Modern Greek";
 
                     }
-                    if(Languages[1]=="ModernGreek"){
+                    if(Objects.equals(Languages[1], "ModernGreek")){
                         Languages[1]="Modern Greek";
+
                     }
-                }
                     comboBox1.setValue(Languages[0]);
                     comboBox2.setValue(Languages[1]);
+                }
+
                 }
                 else{
                     textArea1.setText(selectedItem);
@@ -467,8 +468,6 @@ public class MainController {
     String[] Synonyms;
     public String[] Translate(){//Translates the given word in the desired language
 
-        String[] Boş = new String[0];
-
         String Searchword=textArea1.getText();
         String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
         if (languageMaps.containsKey(selectedLanguagePair)) {
@@ -499,7 +498,7 @@ public class MainController {
                 String translationcheck=tempLanguageMap1.get(Searchword);
                 boolean wordexist =tempLanguageMap2.containsKey(tempLanguageMap1.get(Searchword));
 
-                if(translationcheck!=null&&wordexist==true){
+                if(translationcheck!=null&& wordexist){
                     String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
                      Synonyms = indirecttranslation.split("/synonym: ");
                     String wantedtrans=Synonyms[0];
@@ -565,6 +564,7 @@ public class MainController {
             System.out.println("Word added.");
         }
     }
+
 
 
     public void Edit() throws IOException {
@@ -700,17 +700,61 @@ public class MainController {
 
     String[]Languages;
     public void FindLanguage() {
+        ArrayList<String>IndirectLanguages=new ArrayList<>();
+        IndirectLanguages.add("ModernGreek_German");
+        IndirectLanguages.add("ModernGreek_Swedish");
+        IndirectLanguages.add("ModernGreek_Turkish");
+        IndirectLanguages.add("Italian_French");
+        IndirectLanguages.add("Swedish_ModernGreek");
+        IndirectLanguages.add("Turkish_Swedish");
+        IndirectLanguages.add("Turkish_Italian");
+        IndirectLanguages.add("Turkish_French");
+        IndirectLanguages.add("Turkish_ModernGreek");
         String Searchword=textArea1.getText();
         ArrayList<String>AvailableLanguages=new ArrayList<>();
-
         H_List.getItems().clear();
         for (String key : languageMaps.keySet()) {
+
             HashMap<String, String> innerHashMap = languageMaps.get(key);
 
             if (innerHashMap.containsKey(Searchword)) {
                 AvailableLanguages.add(key);
             }
+
         }
+
+        for (String indirectkey : IndirectLanguages){
+
+        String[] myArray;
+        myArray = indirectkey.split("_");
+
+
+               String firstlang=myArray[0];
+               String secondlang=myArray[1];
+               String lang1toeng=firstlang+"_"+"English";
+               String engtolang2="English"+"_"+secondlang;
+
+            if(languageMaps.containsKey(lang1toeng)&&languageMaps.containsKey(engtolang2)) {
+                System.out.println(lang1toeng+engtolang2);
+                HashMap<String, String> tempLanguageMap1 = languageMaps.get(lang1toeng);
+                HashMap<String, String> tempLanguageMap2 = languageMaps.get(engtolang2);
+                String translationcheck=tempLanguageMap1.get(Searchword);
+                boolean wordexist =tempLanguageMap2.containsKey(tempLanguageMap1.get(Searchword));
+
+
+                if(translationcheck!=null&& wordexist) {
+
+                    String Availableindirect = firstlang + "_" + secondlang;
+                    if (!AvailableLanguages.contains(Availableindirect)) {
+                        AvailableLanguages.add(Availableindirect);
+
+                    }
+                }
+
+              }
+
+        }
+
             AvailableLanguages
                     .stream()
                     .forEach(H_List.getItems()::add);
