@@ -1023,9 +1023,16 @@ public class MainController {
         DeleteTextArea2.setText("");
     }
     public void AddClear(){
+        AddTextArea1.setText("");
+        AddTextArea2.setText("");
 
     }
     public void AddReplace(){
+        String s1 = AddComboBox1.getValue();
+        String s2 = AddComboBox2.getValue();
+        int temp = AddComboBox1.getSelectionModel().getSelectedIndex();
+        AddComboBox1.getSelectionModel().select(AddComboBox2.getSelectionModel().getSelectedIndex());
+        AddComboBox2.getSelectionModel().select(temp);
 
     }
     @FXML
