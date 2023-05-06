@@ -1,9 +1,13 @@
 package com.ce216.dictionary;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -45,6 +49,8 @@ public class MainController {
 
     @FXML
     private TextArea AddTextArea1;
+    @FXML
+    private Button HelpButton;
 
     @FXML
     private TextArea AddTextArea2;
@@ -700,10 +706,10 @@ public class MainController {
     return Synonyms;
     }
     public  void Replace(){
-        String s1 = EditComboBox1.getValue();
+        String s1 = comboBox1.getValue();
         String s2 = comboBox2.getValue();
-        int temp = EditComboBox1.getSelectionModel().getSelectedIndex();
-        EditComboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
+        int temp = comboBox1.getSelectionModel().getSelectedIndex();
+        comboBox1.getSelectionModel().select(comboBox2.getSelectionModel().getSelectedIndex());
         comboBox2.getSelectionModel().select(temp);
     }
     public void Add() throws IOException {
@@ -984,6 +990,58 @@ public class MainController {
         EditAnchor.setVisible(true);
 
     }
+    public void EditClearWord(){
+
+            EditTextArea1.setText("");
+
+    }
+    public void EditClearUpdate(){
+
+            EditTextArea11.setText("");
+            EditTextArea12.setText("");
+
+
+
+    }
+    public void EditReplace(){
+        String s1 = EditComboBox1.getValue();
+        String s2 = EditComboBox2.getValue();
+        int temp = EditComboBox1.getSelectionModel().getSelectedIndex();
+        EditComboBox1.getSelectionModel().select(EditComboBox2.getSelectionModel().getSelectedIndex());
+        EditComboBox2.getSelectionModel().select(temp);
+
+    }
+    public void DeleteReplace(){
+        String s1 = DeleteComboBox1.getValue();
+        String s2 = DeleteComboBox2.getValue();
+        int temp = DeleteComboBox1.getSelectionModel().getSelectedIndex();
+        DeleteComboBox1.getSelectionModel().select(DeleteComboBox2.getSelectionModel().getSelectedIndex());
+        DeleteComboBox2.getSelectionModel().select(temp);
+    }
+    public void DeleteClear(){
+        DeleteTextArea1.setText("");
+        DeleteTextArea2.setText("");
+    }
+    public void AddClear(){
+
+    }
+    public void AddReplace(){
+
+    }
+    @FXML
+    private void GoHelp() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/HelpScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("Help");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.showAndWait();
+    }
+
+
+
 
 
 

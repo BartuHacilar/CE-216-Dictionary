@@ -8,41 +8,41 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.HelpController">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ce216.dictionary.HelpController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%201.png" />
+            <Image url="@/help/image1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%202.png" />
+            <Image url="@help/image2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%203.png" />
+            <Image url="@help/image3.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%204.png" />
+            <Image url="@help/image4.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%205.png" />
+            <Image url="@help/image5.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%206.png" />
+            <Image url="@help/image1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@images/help/Frame%207.png" />
+            <Image url="@help/image2.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER">
