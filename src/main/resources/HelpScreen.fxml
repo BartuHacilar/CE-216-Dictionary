@@ -12,12 +12,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@/help/image1.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
-         <image>
-            <Image url="@help/image2.png" />
+            <Image url="@/help/image2.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
@@ -37,12 +32,17 @@
       </ImageView>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@help/image1.png" />
+            <Image url="@help/image6.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
          <image>
-            <Image url="@help/image2.png" />
+            <Image url="@help/image7.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" visible="false">
+         <image>
+            <Image url="@help/image8.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER">

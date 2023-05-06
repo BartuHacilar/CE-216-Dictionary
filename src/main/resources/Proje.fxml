@@ -18,7 +18,7 @@
    <children>
       <AnchorPane fx:id="EditAnchor" prefHeight="200.0" prefWidth="200.0" styleClass="anchorpane" stylesheets="@css/Button.css" visible="false">
          <children>
-            <Button fx:id="EditButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="698.0" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
+            <Button fx:id="EditButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="698.0" mnemonicParsing="false" onAction="#Edit" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -39,7 +39,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="EditGoback" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromEditToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
+            <Button fx:id="EditGoback" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromEditToMain" prefHeight="43.0" prefWidth="48.0" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +55,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="EditclearButton1" mnemonicParsing="false" onAction="#EditClearWord" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                  <Button fx:id="EditclearButton1" mnemonicParsing="false" onAction="#EditClearWord" opacity="0.63" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView111">
                            <image>
@@ -99,7 +99,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="EditclearButton2" mnemonicParsing="false" onAction="#EditClearUpdate" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                  <Button fx:id="EditclearButton2" mnemonicParsing="false" onAction="#EditClearUpdate" opacity="0.63" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView1111">
                            <image>
@@ -128,7 +128,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="DeleteGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromDeleteToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
+            <Button fx:id="DeleteGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromDeleteToMain" prefHeight="43.0" prefWidth="48.0" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -144,7 +144,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="DeleteDeletebutton" mnemonicParsing="false" onAction="#DeleteClear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                  <Button fx:id="DeleteDeletebutton" mnemonicParsing="false" onAction="#DeleteClear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView11">
                            <image>
@@ -167,7 +167,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button fx:id="DeleteReplaceButton1" mnemonicParsing="false" onAction="#DeleteReplace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <Button fx:id="DeleteReplaceButton1" mnemonicParsing="false" onAction="#DeleteReplace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fx:id="arrowImageView11" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
                            <image>
@@ -186,7 +186,7 @@
                   </ComboBox>
                </children>
             </HBox>
-            <Button fx:id="DeleteButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="582.0" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
+            <Button fx:id="DeleteButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="582.0" mnemonicParsing="false" onAction="#Delete" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -211,7 +211,7 @@
                               <Insets />
                            </opaqueInsets>
                         </TextArea>
-                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#Clear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                            <graphic>
                               <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView">
                                  <image>
@@ -257,7 +257,7 @@
                <children>
                   <HBox alignment="CENTER" fillHeight="false" prefHeight="54.0" prefWidth="1240.0">
                      <children>
-                        <Button fx:id="translateButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate   " textAlignment="CENTER" textFill="#0f086b">
+                        <Button fx:id="translateButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#Translate" opacity="0.85" prefHeight="42.0" prefWidth="153.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Translate   " textAlignment="CENTER" textFill="#0f086b">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -272,7 +272,7 @@
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="Synonymbutton" alignment="CENTER" mnemonicParsing="false" onAction="#FindSynonym" opacity="0.87" prefHeight="42.0" prefWidth="156.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Find Synonyms" textAlignment="CENTER" textFill="#55839a" HBox.hgrow="ALWAYS">
+                        <Button fx:id="Synonymbutton" alignment="CENTER" mnemonicParsing="false" onAction="#FindSynonym" opacity="0.87" prefHeight="42.0" prefWidth="156.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Find Synonyms" textAlignment="CENTER" textFill="#55839a" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -284,9 +284,9 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" layoutX="139.0" layoutY="81.0" prefHeight="158.0" prefWidth="980.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="182.0">
+            <HBox alignment="CENTER" layoutX="139.0" layoutY="81.0" prefHeight="158.0" prefWidth="980.0" stylesheets="@css/Button.css" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="182.0">
                <children>
-                  <Button fx:id="HistoryButton" mnemonicParsing="false" onAction="#History" opacity="0.78" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#ddd0c3" HBox.hgrow="ALWAYS">
+                  <Button fx:id="HistoryButton" mnemonicParsing="false" onAction="#History" opacity="0.78" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#cedbdd" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -303,7 +303,7 @@
                         <Insets left="120.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button fx:id="replaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <Button fx:id="replaceButton" mnemonicParsing="false" onAction="#Replace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#b9aa9b" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fx:id="arrowImageView" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
                            <image>
@@ -324,7 +324,7 @@
             </HBox>
             <VBox alignment="CENTER_RIGHT" layoutX="1066.0" layoutY="438.0" prefHeight="289.0" prefWidth="121.0" AnchorPane.rightAnchor="114.0">
                <children>
-                  <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#AddButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
+                  <Button fx:id="AddButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#AddButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -336,7 +336,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#EditButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
+                  <Button fx:id="EditButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#EditButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Edit    " textAlignment="CENTER" textFill="#0d0d79">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -351,7 +351,7 @@
                         <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#DeleteButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
+                  <Button fx:id="DeleteButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#DeleteButton" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Delete" textAlignment="CENTER" textFill="#721a1a">
                      <font>
                         <Font name="Calibri Bold" size="20.0" />
                      </font>
@@ -404,7 +404,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="HistoryGoback" alignment="TOP_LEFT" layoutX="67.0" layoutY="32.0" mnemonicParsing="false" onAction="#GoBackFromHistoryToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
+            <Button fx:id="HistoryGoback" alignment="TOP_LEFT" layoutX="67.0" layoutY="32.0" mnemonicParsing="false" onAction="#GoBackFromHistoryToMain" prefHeight="43.0" prefWidth="48.0" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -426,7 +426,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="AddGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromAddToMain" prefHeight="43.0" prefWidth="48.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css">
+            <Button fx:id="AddGoBack" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#GoBackFromAddToMain" prefHeight="43.0" prefWidth="48.0" styleClass="basmayeri" stylesheets="@css/Button.css">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="32.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -435,7 +435,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="AddButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="607.0" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #d3c1ae;" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
+            <Button fx:id="AddButton1" alignment="CENTER" contentDisplay="RIGHT" layoutX="575.0" layoutY="607.0" mnemonicParsing="false" onAction="#Add" opacity="0.86" prefHeight="43.0" prefWidth="117.0" styleClass="cevirme" stylesheets="@css/Button.css" text="Add    " textAlignment="CENTER" textFill="#288010">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -454,7 +454,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextArea>
-                  <Button fx:id="AddDeletebutton" mnemonicParsing="false" onAction="#AddClear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #c3b1a0;" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
+                  <Button fx:id="AddDeletebutton" mnemonicParsing="false" onAction="#AddClear" opacity="0.63" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" textFill="#c3b1a0">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false" fx:id="xImageView1">
                            <image>
@@ -477,7 +477,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button fx:id="AddReplaceButton" mnemonicParsing="false" onAction="#AddReplace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: #d3c1ae;" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
+                  <Button fx:id="AddReplaceButton" mnemonicParsing="false" onAction="#AddReplace" opacity="0.79" prefHeight="41.0" prefWidth="42.0" styleClass="basmayeri" stylesheets="@css/Button.css" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fx:id="arrowImageView1" fitHeight="25.0" fitWidth="44.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" smooth="false">
                            <image>

@@ -1,10 +1,10 @@
 .basmayeri {
     -fx-background-radius: 50%;
-    -fx-background-color:  white ;
+    -fx-background-color:  #d3c1ae ;
     -fx-border-radius: 50%;
     }
 .basmayeri:hover{
-    -fx-background-color:#CEDBDD;
+    -fx-background-color:#b9aa9b;
     -fx-background-radius: 50%;
 }
 .basmayeri:pressed{
@@ -13,12 +13,12 @@
     }
 
 .cevirme {
--fx-background-color: #E5E4E5;
+-fx-background-color: #d3c1ae;
 -fx-border-radius:50%
 
 }
 .cevirme:hover {
- -fx-background-color: #CEDBDD ;
+ -fx-background-color: #b9aa9b ;
 }
 .cevirme:pressed{
  -fx-background-color:#aab3b5;
