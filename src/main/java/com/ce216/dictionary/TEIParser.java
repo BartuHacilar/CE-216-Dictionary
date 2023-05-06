@@ -31,9 +31,9 @@ public class TEIParser {
 
             String currentOrth = null;
             String line;
-            String currentSynonym="";
-            String currentQuote="";
-            String Complete="";
+            String currentSynonym;
+            String currentQuote;
+            String Complete="Translations are :,";
 
             boolean isEngEll = fileName.equals("eng-ell.tei");
 
@@ -43,10 +43,11 @@ public class TEIParser {
                     currentOrth = line.replaceAll("<.*?>", "").trim();
                 } else if (line.contains("</quote>")) {
                     currentQuote = line.replaceAll("<.*?>", "").trim();
-                    Complete = currentQuote;
+                    Complete += currentQuote;
+                    Complete+=",";
                 } else if (isEngEll && line.contains("</def>")) {
                     currentQuote = line.replaceAll("<.*?>", "").trim();
-                    Complete = currentQuote;
+                    Complete += currentQuote;
 
                 } else if (line.contains("<xr type=\"syn\">")) {
                     while (!(line.contains("</xr>"))) {
@@ -63,7 +64,7 @@ public class TEIParser {
                     currentOrth = null;
                     currentQuote = null;
                     currentSynonym = null;
-                    Complete = null;
+                    Complete = "Translations are :, ";
                     if (maps.keySet() == null)
                         System.out.println("this hashmap is empty");
                 }

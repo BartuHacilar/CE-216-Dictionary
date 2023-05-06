@@ -658,22 +658,29 @@ public class MainController {
         System.out.println("Deleted");
 
     }
-    String[] Synonyms;
-    public String[] Translate(){//Translates the given word in the desired language
+    String[] SynonymsAndTranslations;
+    String[]Translations;
 
+    public String[] Translate(){//Translates the given word in the desired language
+        String translations=" ";
         String Searchword=textArea1.getText();
         String selectedLanguagePair = selectedLanguage1 + "_" + selectedLanguage2;
         if (languageMaps.containsKey(selectedLanguagePair)) {
             HashMap<String, String> selectedLanguageMap = languageMaps.get(selectedLanguagePair);
             String translation = selectedLanguageMap.get(Searchword);
-             Synonyms = translation.split("/synonym: ");
-            String wantedtrans=Synonyms[0];
+             SynonymsAndTranslations = translation.split("/synonym: ");
+            String wantedtrans= SynonymsAndTranslations[0];
+            Translations=SynonymsAndTranslations[0].split(",");
             if (wantedtrans != null) {
                 textArea1.setText(Searchword);
-                textArea2.setText(wantedtrans);
-                String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+" Translation is :"+wantedtrans;
+                for (String items:Translations){
+                    int count=1;
+                    translations+=items+"\n";
+                }
+                textArea2.setText(translations);
+                String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+wantedtrans;
                 History.add(translationhistory);
-                return Synonyms;
+                return SynonymsAndTranslations;
 
             } else {
                 System.out.println("There is no such word in this file");
@@ -690,20 +697,28 @@ public class MainController {
 
                 if(translationcheck!=null&& wordexist){
                     String indirecttranslation=tempLanguageMap2.get(tempLanguageMap1.get(Searchword));
-                     Synonyms = indirecttranslation.split("/synonym: ");
-                    String wantedtrans=Synonyms[0];
+                     SynonymsAndTranslations = indirecttranslation.split("/synonym: ");
+                    String wantedtrans= SynonymsAndTranslations[0];
+                    Translations=SynonymsAndTranslations[0].split(",");
+
+
+                        for (String items:Translations){
+                            int count=1;
+                            translations+=items+"\n";
+                        }
+                        textArea2.setText(translations);
                     textArea1.setText(Searchword);
-                    textArea2.setText(wantedtrans);
-                    String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+" Translation is :"+wantedtrans;
+
+                    String translationhistory = "From "+selectedLanguage1+" Language to "+selectedLanguage2+" Word is : "+Searchword+wantedtrans;
                     History.add(translationhistory);
-                    return Synonyms;
+                    return SynonymsAndTranslations;
 
 
                 }
                 else System.out.println("The word you searched for was not found .");
             }
         }
-    return Synonyms;
+    return SynonymsAndTranslations;
     }
     public  void Replace(){
         String s1 = comboBox1.getValue();
