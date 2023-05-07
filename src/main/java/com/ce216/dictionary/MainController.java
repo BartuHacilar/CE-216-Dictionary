@@ -10,10 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class MainController {
@@ -797,6 +801,43 @@ public class MainController {
 
         // Check if the user input is for updating the key or value
         if (!wordd.isEmpty() && !worddd.isEmpty()) {
+            languageMap.remove(word);
+
+            // Delete the word and its translation from the language file
+            String dosyaname = Dil_Dosya.get(languagePair);
+            Path path = Paths.get("src/main/resources/languages/" + dosyaname);
+            Charset charset = StandardCharsets.UTF_8;
+            List<String> fileContent = new ArrayList<>();
+            try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+                String line;
+                boolean orthfound=false;
+                while ((line = reader.readLine()) != null) {
+
+                    if (line.contains("<orth>" + word + "</orth>")){
+                        orthfound=true;
+                    }
+                    if ( !orthfound) {
+                        fileContent.add(line);
+                    }
+                    if (line.contains("</entry>")) {
+                        if(orthfound){
+                            fileContent.add(line);
+                            orthfound=false;
+                        }
+
+
+
+                    }
+                }
+                fileContent.add("<entry>");
+                fileContent.add("<orth>"+wordd+"</orth>");
+                fileContent.add("<quote>"+worddd+"</quote>");
+                fileContent.add("</entry>");
+
+            }
+            Files.write(path, fileContent, charset);
+
+
             // Update the language map with the edited key
             languageMap.put(wordd, languageMap.get(word));
             languageMap.remove(word);
@@ -805,20 +846,89 @@ public class MainController {
             languageMap.put(wordd,worddd);
         }
         else if(!wordd.isEmpty() && worddd.isEmpty()){
-            languageMap.put(wordd, languageMap.get(word));
+            String Translationtemp;
+            Translationtemp=languageMap.get(word);
+            languageMap.remove(word);
+
+            // Delete the word and its translation from the language file
+            String dosyaname = Dil_Dosya.get(languagePair);
+            Path path = Paths.get("src/main/resources/languages/" + dosyaname);
+            Charset charset = StandardCharsets.UTF_8;
+            List<String> fileContent = new ArrayList<>();
+            try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+                String line;
+                boolean orthfound=false;
+                while ((line = reader.readLine()) != null) {
+
+                    if (line.contains("<orth>" + word + "</orth>")){
+                        orthfound=true;
+                    }
+                    if ( !orthfound) {
+                        fileContent.add(line);
+                    }
+                    if (line.contains("</entry>")) {
+                        if(orthfound){
+                            fileContent.add(line);
+                            orthfound=false;
+                        }
+
+
+
+                    }
+                }
+                fileContent.add("<entry>");
+                fileContent.add("<orth>"+wordd+"</orth>");
+                fileContent.add("<quote>"+Translationtemp+"</quote>");
+                fileContent.add("</entry>");
+
+            }
+            Files.write(path, fileContent, charset);
+
+
+            languageMap.put(wordd, Translationtemp);
             languageMap.remove(word);
             EditTextArea1.setText(wordd);
         }
         else if(wordd.isEmpty() && !worddd.isEmpty()){
+            languageMap.remove(word);
+
+            // Delete the word and its translation from the language file
+            String dosyaname = Dil_Dosya.get(languagePair);
+            Path path = Paths.get("src/main/resources/languages/" + dosyaname);
+            Charset charset = StandardCharsets.UTF_8;
+            List<String> fileContent = new ArrayList<>();
+            try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+                String line;
+                boolean orthfound=false;
+                while ((line = reader.readLine()) != null) {
+
+                    if (line.contains("<orth>" + word + "</orth>")){
+                        orthfound=true;
+                    }
+                    if ( !orthfound) {
+                        fileContent.add(line);
+                    }
+                    if (line.contains("</entry>")) {
+                        if(orthfound){
+                            fileContent.add(line);
+                            orthfound=false;
+                        }
+
+
+
+                    }
+                }
+                fileContent.add("<entry>");
+                fileContent.add("<orth>"+word+"</orth>");
+                fileContent.add("<quote>"+worddd+"</quote>");
+                fileContent.add("</entry>");
+
+            }
+            Files.write(path, fileContent, charset);
+
             languageMap.put(word,worddd);
         }
-        /*else if (!worddd.isEmpty()) {
-            // Update the language map with the edited value
-            languageMap.put(word, worddd);
-            // Update the UI to reflect the changes
-            EditTextArea1.setText(worddd);
-        }
-        */
+
         else {
             System.out.println("Please enter a value for either the key or value field.");
             return;
@@ -872,16 +982,33 @@ public class MainController {
 
         // Delete the word and its translation from the language file
         String dosyaname = Dil_Dosya.get(languagePair);
-        File file = new File("src/main/resources/languages/" + dosyaname);
-        ArrayList<String> fileContent = new ArrayList<>(Files.readAllLines(file.toPath()));
-        for (int i = 0; i < fileContent.size(); i++) {
-            if (fileContent.get(i).contains("<orth>" + word + "</orth>")||fileContent.get(i).contains("<quote>" + word + "</quote>")) {
-                fileContent.remove(i);
-                fileContent.remove(i); // Remove the corresponding translation too
-                break;
+        Path path = Paths.get("src/main/resources/languages/" + dosyaname);
+        Charset charset = StandardCharsets.UTF_8;
+        List<String> fileContent = new ArrayList<>();
+        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+            String line;
+            boolean entryFound = false;
+            boolean orthfound=false;
+            while ((line = reader.readLine()) != null) {
+
+                if (line.contains("<orth>" + word + "</orth>")){
+                    orthfound=true;
+                }
+                if ( !orthfound) {
+                    fileContent.add(line);
+                }
+                if (line.contains("</entry>")) {
+                    if(orthfound){
+                        fileContent.add(line);
+                        orthfound=false;
+                    }
+
+
+
+                }
             }
         }
-        Files.write(file.toPath(), fileContent);
+        Files.write(path, fileContent, charset);
 
         System.out.println("Word deleted.");
     }

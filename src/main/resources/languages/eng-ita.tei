@@ -52660,13 +52660,6 @@
          </entry>
          <entry>
             <form>
-               <orth>zodiac</orth>
-            </form>
-            <sense>
-               <cit type="trans">
-                  <quote>zodiaco</quote>
-               </cit>
-            </sense>
          </entry>
          <entry>
             <form>
@@ -52681,3 +52674,13 @@
       </body>
    </text>
 </TEI>
+<entry>
+<orth>zodiacomert</orth>
+<quote>zodiacomerdo</quote>
+</entry>
+<entry>
+</entry>
+<entry>
+<orth>zodiacbartu</orth>
+<quote>zodiackral</quote>
+</entry>

@@ -2,6 +2,7 @@ package com.ce216.dictionary;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
@@ -25,9 +26,8 @@ public class TEIParser {
             // Loop through files and read data into HashMaps
 
             String fileName = fileNames[Selected];
-            System.out.println(com.ce216.dictionary.TEIParser.class.getResource("/languages/" + fileName));
-            InputStream inputStream = com.ce216.dictionary.TEIParser.class.getClassLoader().getResourceAsStream("languages/" + fileName);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            URL url = TEIParser.class.getResource("/languages/" + fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
 
             String currentOrth = null;
             String line;
